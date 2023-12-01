@@ -1,0 +1,6 @@
+/.htaccess
+/App/Configuration/*
+/logs/*
+/Imports/data/*
+/vendor/*
+/Resources/*

@@ -1,0 +1,11 @@
+Router is from from https://github.com/phprouter/main
+
+Look for autoloader for classes in configuration
+
+installed composer to ampp/php
+
+you can make qr codes with https://phpqrcode.sourceforge.net/index.php#demo
+
+composer require mpdf/mpdf
+
+router came from 
