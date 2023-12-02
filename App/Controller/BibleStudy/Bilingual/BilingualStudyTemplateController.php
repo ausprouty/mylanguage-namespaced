@@ -2,6 +2,7 @@
 namespace App\Controller\BibleStudy\Bilingual;
 
 use App\Controller\BibleStudy\BibleBlockController as BibleBlockController;
+use App\Model\Bible\BibleModel as BibleModel;
 
 abstract class BilingualStudyTemplateController
 {
@@ -84,13 +85,13 @@ abstract class BilingualStudyTemplateController
     
     protected function findBibleOne($languageCodeHL1, $testament='NT')
     {
-        $bible = new Bible();
+        $bible = new BibleModel();
         $bible->setBestDbsBibleByLanguageCodeHL($languageCodeHL1, $testament);
         return $bible;
     }
     protected function findBibleTwo($languageCodeHL2, $testament= 'NT')
     {
-        $bible = new Bible();
+        $bible = new BibleModel();
         $bible->setBestDbsBibleByLanguageCodeHL($languageCodeHL2, $testament);
         return $bible;
     }

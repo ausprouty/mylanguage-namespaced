@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\BibleStudy\Monolingual;
 
+use App\Model\Bible\BibleModel as BibleModel;
+
 abstract class MonolingualStudyTemplateController
 {
     protected  $bible1;
@@ -65,7 +67,7 @@ abstract class MonolingualStudyTemplateController
     
     protected function findBibleOne($languageCodeHL1, $testament='NT')
     {
-        $bible = new Bible();
+        $bible = new BibleModel();
         $bible->setBestDbsBibleByLanguageCodeHL($languageCodeHL1, $testament);
         return $bible;
     }

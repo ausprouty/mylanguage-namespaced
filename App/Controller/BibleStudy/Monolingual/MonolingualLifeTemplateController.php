@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\BibleStudy\Monolingual;
+
 use App\Controller\BibleStudy\Monolingual\MonolingualStudyTemplateController as MonolingualStudyTemplateController;
+use App\Controller\BibleStudy\LifeStudyController as LifeStudyController;
 
 class MonolingualLifeTemplateController extends MonolingualStudyTemplateController
 {

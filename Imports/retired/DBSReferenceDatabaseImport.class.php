@@ -1,5 +1,6 @@
 <?php
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
 
 class  DBSReferenceDatabaseImport{
   private  $dbConnection;
@@ -29,7 +30,7 @@ public function getLessons()
     private function makeBibleReferenceInfo($data){
         $lesson = $data->lesson;
         $entry= $data->reference;
-        $bibleReferenceInfo= new BibleReferenceInfo();
+        $bibleReferenceInfo= new BibleReferenceInfoModel();
         $export =  $bibleReferenceInfo->setFromPassage($entry)->exportPublic();
         $info = json_encode($export);
         $query = "UPDATE  dbs_references SET bible_reference_info = :info

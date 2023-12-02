@@ -1,10 +1,14 @@
 <?php
 
 use App\Controller\BiblePassage\BibleBrain\BibleBrainTextPlainController;
+use App\Model\Bible\BibleModel as BibleModel;
+use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
+
+
 echo ("You should see a nicely formatted text below with verse numbers.<hr>");
-$bible = new Bible();
+$bible = new BibleModel();
 $bible->selectBibleByBid(6349);
-$bibleReferenceInfo = new BibleReferenceInfo();
+$bibleReferenceInfo = new BibleReferenceInfoModel();
 $bibleReferenceInfo->setFromPassage('Luke 1:1-6');
 
 $passage = new BibleBrainTextPlainController($bibleReferenceInfo, $bible);

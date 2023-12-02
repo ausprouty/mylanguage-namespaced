@@ -2,10 +2,11 @@
 
 namespace App\Controller\BiblePassage;
 
+
+use App\Controller\BiblePassage\BibleYouVersionPassageController;
+use App\Controller\BiblePassage\BibleWordPassageController;
 use App\Controller\BiblePassage\BibleBrain\BibleBrainTextPlainController;
 use App\Controller\BiblePassage\BibleGateway\BibleGatewayPassageController;
-use  App\Controller\BiblePassage\BibleYouVersionPassageController;
-use  App\Controller\BiblePassage\BibleWordPassageController;
 use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 
@@ -41,8 +42,8 @@ class PassageSelectController extends BiblePassageModel
         return $this->bibleReferenceInfo;
     }
     private  function checkDatabase(){
-        $this->passageId = BiblePassage::createBiblePassageId($this->bible->getBid(),  $this->bibleReferenceInfo);
-        $passage = new BiblePassage();
+        $this->passageId = BiblePassageModel::createBiblePassageId($this->bible->getBid(),  $this->bibleReferenceInfo);
+        $passage = new BiblePassageModel();
         $passage->findStoredById($this->passageId);
         if ($passage->getReferenceLocalLanguage()) {
             $this->passageText= $passage->getPassageText();

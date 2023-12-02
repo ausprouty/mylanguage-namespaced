@@ -3,6 +3,7 @@
 namespace App\Controller\BibleStudy\Bilingual;
 
 use App\Controller\BibleStudy\Bilingual\BilingualStudyTemplateController as BilingualStudyTemplateController;
+use App\Controller\BibleStudy\LifeStudyController as LifeStudyController;
 
 class BilingualLifeTemplateController extends BilingualStudyTemplateController
 {

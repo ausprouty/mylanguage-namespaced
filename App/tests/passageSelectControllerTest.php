@@ -1,8 +1,9 @@
 <?php
+use App\Model\Bible\BibleModel as BibleModel;
 
 $code = 'eng00';
 $entry = 'John 3:16-18';
-$bibleInfo = new Bible();
+$bibleInfo = new BibleModel();
 $bibleInfo->getBestBibleByLanguageCodeHL($code);
 $referenceInfo = new  BibleReferenceInfo();
 $referenceInfo->setFromPassage($entry);

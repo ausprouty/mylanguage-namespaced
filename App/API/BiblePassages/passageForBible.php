@@ -2,7 +2,7 @@
 
 $bid =intval($_POST['bid']);
 $entry =strip_tags($_POST['entry']);
-$bible = new Bible();
+$bible = new BibleModel();
 $bible->selectBibleByBid($bid);
 $bibleReferenceInfo = new  BibleReferenceInfo();
 $bibleReferenceInfo->setFromPassage($entry);

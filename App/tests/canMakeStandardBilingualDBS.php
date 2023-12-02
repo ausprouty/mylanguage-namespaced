@@ -1,4 +1,8 @@
 <?php
+use App\Model\Bible\BibleModel as BibleModel;
+use App\Model\BibleStudy\DbsReferenceModel as DbsReferenceModel;
+
+
 echo ('YOu should see a Bilingual Bible study for English and French Lesson 3<hr>');
 $lang1 ='eng00';
 $lang2= 'frn00';
@@ -6,18 +10,18 @@ $lesson = 3;
 
 
 $dbs = new BilingualDbsTemplateController($lang1, $lang2, $lesson);
-$dbsReference= new DbsReference();
+$dbsReference= new DbsReferenceModel();
 $dbsReference->setLesson($lesson);
 
 $bibleReferenceInfo= new  BibleReferenceInfo();
 $bibleReferenceInfo->setFromEntry($dbsReference->getEntry());
 $testament = $bibleReferenceInfo->getTestament();
 
-$bible1 = new Bible();
+$bible1 = new BibleModel();
 $bible1->setBestDbsBibleByLanguageCodeHL($lang1, $testament);
 $dbs->setBibleOne($bible1);
 
-$bible2 = new Bible();
+$bible2 = new BibleModel();
 $bible2->setBestDbsBibleByLanguageCodeHL($lang2, $testament);
 $dbs->setBibleTwo($bible2);
 
