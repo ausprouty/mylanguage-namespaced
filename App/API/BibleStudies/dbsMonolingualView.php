@@ -4,6 +4,7 @@
    Then store it
    Then send you the text you need
 */
+use  App\Controller\ReturnDataController as ReturnDataController;
 
 $fileName = MonolingualDbsTemplateController::findFileNameView($lesson, $languageCodeHL1);
 $path = MonolingualDbsTemplateController::getPathView();

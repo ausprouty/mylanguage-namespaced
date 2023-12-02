@@ -4,6 +4,10 @@
    Then store it
    Then send you the address of the file you can download
 */
+
+use  App\Controller\ReturnDataController as ReturnDataController;
+
+
 $fileName =  BilingualDbsTemplateController::findFileNamePdf($lesson, $languageCodeHL1, $languageCodeHL2);
 $path = BilingualDbsTemplateController::getPathPdf();
 $filePath = $path . $fileName;

@@ -1,5 +1,6 @@
 <?php
 use App\Controller\BibleStudy\LifeStudyController as LifeStudyController;
+use App\Controller\ReturnDataController as ReturnDataController;
 
 $lessons = new LifeStudyController();
 if (!isset ($languageCodeHL1)){

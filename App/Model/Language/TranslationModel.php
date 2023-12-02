@@ -2,7 +2,7 @@
 
 namespace App\Model\Language;
 
-class Translation
+class TranslationModel
 {
   private $translation;
 

@@ -2,6 +2,7 @@
 namespace App\Controller\BibleStudy;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use App\Model\Language\TranslationModel as TranslationModel;
 
 class LeadershipStudyController{
     private $data;
@@ -32,7 +33,7 @@ class LeadershipStudyController{
     }
     public function formatWithEthnicTitle($languageCodeHL){
         $formated = [];
-        $translation = new Translation($languageCodeHL, 'leadership');
+        $translation = new TranslationModel($languageCodeHL, 'leadership');
         foreach ($this->data as $lesson){
             $translated = $translation->translateText ($lesson['description']);
             $title = $lesson ['lesson'] . '. ' . $translated ;
@@ -47,7 +48,7 @@ class LeadershipStudyController{
     static function getTitle($lesson, $languageCodeHL){
         $dbConnection = new DatabaseConnectionModel();
         if ($languageCodeHL != 'eng00'){
-            $translation = new Translation($languageCodeHL, 'leadership');
+            $translation = new TranslationModel($languageCodeHL, 'leadership');
         }
         $query = "SELECT lesson, description FROM leadership_references
         WHERE lesson = :lesson";

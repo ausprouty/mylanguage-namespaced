@@ -1,4 +1,6 @@
 <?php
+use  App\Controller\ReturnDataController as ReturnDataController;
+
 $previous = $languageCodeHL;
 $directory = ROOT_TRANSLATIONS . 'languages/';
 $scanned_directory = array_diff(scandir($directory), array('..', '.'));

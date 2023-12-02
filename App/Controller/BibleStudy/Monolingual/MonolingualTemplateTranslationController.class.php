@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\BibleStudy\Monolingual;
 
+use App\Model\Language\TranslationModel as TranslationModel;
+
 class MonolingualTemplateTranslationController {
     
      private $templateName;
@@ -39,7 +41,7 @@ class MonolingualTemplateTranslationController {
         $this->template = file_get_contents($filename);
      }
      private function setTranslation1(){
-      $translationFile = new Translation( $this->languageCodeHL1, $this->translationFile );
+      $translationFile = new TranslationModel( $this->languageCodeHL1, $this->translationFile );
       $this->translation1 = $translationFile->getTranslationFile();
      }
      private function replacePlaceHolders(){

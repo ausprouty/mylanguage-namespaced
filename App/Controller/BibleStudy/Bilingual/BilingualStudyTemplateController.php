@@ -3,6 +3,7 @@ namespace App\Controller\BibleStudy\Bilingual;
 
 use App\Controller\BibleStudy\BibleBlockController as BibleBlockController;
 use App\Model\Bible\BibleModel as BibleModel;
+use App\Model\Language\TranslationModel as TranslationModel;
 
 abstract class BilingualStudyTemplateController
 {
@@ -63,9 +64,9 @@ abstract class BilingualStudyTemplateController
         $this->setBilingualTemplate($this->getBilingualTemplateName());
     }
     protected function setTranslation ($source = 'dbs') {
-        $translation1 = new Translation($this->language1->getLanguageCodeHL(), $source);
+        $translation1 = new TranslationModel($this->language1->getLanguageCodeHL(), $source);
         $this->translation1 = $translation1->getTranslationFile();
-        $translation2 = new Translation($this->language2->getLanguageCodeHL(), $source);
+        $translation2 = new TranslationModel($this->language2->getLanguageCodeHL(), $source);
         $this->translation2 =  $translation2->getTranslationFile();
     }
     

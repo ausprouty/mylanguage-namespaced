@@ -4,6 +4,7 @@ namespace App\Controller\BibleStudy\Bilingual;
 
 use App\Controller\BibleStudy\Bilingual\BilingualStudyTemplateController as BilingualStudyTemplateController;
 use App\Controller\BibleStudy\LifeStudyController as LifeStudyController;
+use App\Model\Language\LanguageModel as LanguageModel;
 
 class BilingualLifeTemplateController extends BilingualStudyTemplateController
 {
@@ -15,8 +16,8 @@ class BilingualLifeTemplateController extends BilingualStudyTemplateController
         return $qrCodeGenerator->getQrCodeUrl();
     }
     static function findFileName($lesson, $languageCodeHL1, $languageCodeHL2){
-        $lang1 = Language::getEnglishNameFromCodeHL($languageCodeHL1);
-        $lang2 = Language::getEnglishNameFromCodeHL($languageCodeHL2);
+        $lang1 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL1);
+        $lang2 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL2);
         $fileName =  'LifePrinciple'. $lesson .'('. $lang1 . '-' . $lang2 .')';
         $fileName = str_replace( ' ', '_', $fileName);
 

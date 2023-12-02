@@ -1,5 +1,7 @@
 <?php
 
+use  App\Controller\ReturnDataController as ReturnDataController;
+
 $bid =intval($_POST['bid']);
 $entry =strip_tags($_POST['entry']);
 $bible = new BibleModel();

@@ -2,6 +2,7 @@
 namespace App\Controller\Video;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use App\Model\Language\TranslationModel as TranslationModel;
 
 class JesusVideoSegmentController{
     private $data;
@@ -33,7 +34,7 @@ class JesusVideoSegmentController{
     }
     public function formatWithEthnicTitle($languageCodeHL){
         $formated = [];
-        $translation = new Translation($languageCodeHL, 'video');
+        $translation = new TranslationModel($languageCodeHL, 'video');
         foreach ($this->data as $segment){
             $translated = $translation->translateText ($segment['title']);
             $title = $segment ['id'] . '. ' . $translated ;

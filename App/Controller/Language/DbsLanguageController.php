@@ -2,6 +2,8 @@
 namespace App\Controller\Language;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use App\Model\Language\DbsLanguageModel as DbsLanguageModel;
+use App\Model\Language\LanguageModel as LanguageModel;
 
 
 class DbsLanguageController{
@@ -24,7 +26,7 @@ class DbsLanguageController{
                 $format = 'text';
             }
             $collectionCode = $bible->collectionCode;
-            $dbs = new  DbsLanguage($languageCodeHL, $collectionCode, $format);
+            $dbs = new  DbsLanguageModel($languageCodeHL, $collectionCode, $format);
         }
     }
     public function getOptions(){
@@ -43,37 +45,37 @@ class DbsLanguageController{
         }
     }
     static function bilingualDbsPublicFilename($languageCodeHL1, $languageCodeHL2, $lesson, $type= 'DBS' ){
-        $lang1 = Language::getEnglishNameFromCodeHL($languageCodeHL1);
-        $lang2 = Language::getEnglishNameFromCodeHL($languageCodeHL2);
+        $lang1 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL1);
+        $lang2 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL2);
         $title =  $type .'#'. $lesson .'('. $lang1 . '-' . $lang2 .')';
         return trim($title);
     }
     // the following are depreciated.
     static function bilingualDbsPdfFilename($languageCodeHL1, $languageCodeHL2, $lesson, $type= 'DBS' ){
-        $lang1 = Language::getEnglishNameFromCodeHL($languageCodeHL1);
-        $lang2 = Language::getEnglishNameFromCodeHL($languageCodeHL2);
+        $lang1 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL1);
+        $lang2 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL2);
         $title =  $type . $lesson .'('. $lang1 . '-' . $lang2 .').pdf';
         return trim($title);
     }
     static function bilingualDbsViewFilename($languageCodeHL1, $languageCodeHL2, $lesson, $type= 'DBS' ){
-        $lang1 = Language::getEnglishNameFromCodeHL($languageCodeHL1);
-        $lang2 = Language::getEnglishNameFromCodeHL($languageCodeHL2);
+        $lang1 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL1);
+        $lang2 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL2);
         $title =  $type . $lesson .'('. $lang1 . '-' . $lang2 .').html';
         return trim($title);
     }
     static function monolingualDbsPublicFilename($lesson, $languageCodeHL1, $type= 'DBS' ){
-        $lang1 = Language::getEnglishNameFromCodeHL($languageCodeHL1);
+        $lang1 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL1);
         $title =  $type .'#'. $lesson .'('. $lang1  .')';
         return trim($title);
     }
     // the following are depreciated.
     static function monolingualDbsPdfFilename($languageCodeHL1,  $lesson, $type= 'DBS' ){
-        $lang1 = Language::getEnglishNameFromCodeHL($languageCodeHL1);
+        $lang1 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL1);
         $title =  $type . $lesson .'('. $lang1  .').pdf';
         return trim($title);
     }
     static function monolingualDbsViewFilename($lesson, $languageCodeHL1, $type= 'DBS' ){
-        $lang1 = Language::getEnglishNameFromCodeHL($languageCodeHL1);
+        $lang1 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL1);
         $title =  $type . $lesson .'('. $lang1 .').html';
         return trim($title);
     }

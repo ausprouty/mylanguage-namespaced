@@ -2,6 +2,7 @@
 namespace App\Controller\BibleStudy;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use App\Model\Language\TranslationModel as TranslationModel;
 
 class DbsStudyController{
     private $data;
@@ -33,7 +34,7 @@ class DbsStudyController{
     public function formatWithEthnicTitle($languageCodeHL){
         $formated = [];
         $otAvailable = Bible::oldTestamentAvailable($languageCodeHL);
-        $translation = new Translation($languageCodeHL, 'dbs');
+        $translation = new TranslationModel($languageCodeHL, 'dbs');
         writeLogDebug('dbs-33', $this->data);
         foreach ($this->data as $lesson){
             if ($lesson['testament'] == 'NT' || ($lesson['testament'] == 'OT' && $otAvailable)){
@@ -52,7 +53,7 @@ class DbsStudyController{
         writeLogDebug('title-48', $languageCodeHL);
         $dbConnection = new DatabaseConnectionModel();
         if ($languageCodeHL != 'eng00'){
-            $translation = new Translation($languageCodeHL, 'dbs');
+            $translation = new TranslationModel($languageCodeHL, 'dbs');
         }
         $query = "SELECT description FROM dbs_references
         WHERE lesson = :lesson";

@@ -4,6 +4,9 @@
    Then store it
    Then send you the text you need
 */
+
+use  App\Controller\ReturnDataController as ReturnDataController;
+
 $fileName = DbsLanguageController::bilingualDbsViewFilename( 
     $languageCodeHL1, $languageCodeHL2, $lesson , 'Principle');
 $path = BilingualLifeTemplateController::getPathView();

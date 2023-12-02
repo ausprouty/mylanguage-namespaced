@@ -5,6 +5,8 @@
 // fonts available:  https://mpdf.github.io/fonts-languages/available-fonts-v6.html
 namespace App\Controller;
 
+use App\Model\Language\LanguageModel as LanguageModel;
+
 class PdfController {
 
     private $mpdf;
@@ -40,7 +42,7 @@ class PdfController {
         //Sample fontData: {"dejavusans": {"B": "DejaVuSans-Bold.ttf", "I": "DejaVuSans-Oblique.ttf", "R": "DejaVuSans.ttf", "BI": "DejaVuSans-BoldOblique.ttf", "useOTL": 255, "useKashida": 75}, "dejavusanscondensed": {"B": "DejaVuSansCondensed-Bold.ttf", "I": "DejaVuSansCondensed-Oblique.ttf", "R": "DejaVuSansCondensed.ttf", "BI": "DejaVuSansCondensed-BoldOblique.ttf", "useOTL": 255, "useKashida": 75}}
         $fontData = array();
         if ($languageCodeHL1){
-            $data = Language::getFontDataFromCodeHL($languageCodeHL1);
+            $data = LanguageModel::getFontDataFromCodeHL($languageCodeHL1);
             if ($data){
                 foreach ($data as $key=>$value){
                     $fontData[$key] =  $value;
@@ -48,7 +50,7 @@ class PdfController {
             }
         }
         if ($languageCodeHL2){
-            $data = Language::getFontDataFromCodeHL($languageCodeHL2);
+            $data = LanguageModel::getFontDataFromCodeHL($languageCodeHL2);
             if ($data){
                 foreach ($data as $key=>$value){
                     $fontData[$key] =  $value;

@@ -3,6 +3,7 @@ namespace App\Controller\BibleStudy\Monolingual;
 
 use App\Controller\BibleStudy\LeadershipStudyController as LeadershipStudyController;
 use App\Controller\BibleStudy\Monolingual\MonolingualStudyTemplateController as MonolingualStudyTemplateController;
+use App\Model\Language\LanguageModel as LanguageModel;
 
 class MonolingualLeadershipTemplateController extends MonolingualStudyTemplateController
 {
@@ -14,7 +15,7 @@ class MonolingualLeadershipTemplateController extends MonolingualStudyTemplateCo
         return $qrCodeGenerator->getQrCodeUrl();
     }
     static function findFileName($lesson, $languageCodeHL1){
-        $lang1 = Language::getEnglishNameFromCodeHL($languageCodeHL1);
+        $lang1 = LanguageModel::getEnglishNameFromCodeHL($languageCodeHL1);
         $fileName =  'Leadership'. $lesson .'('. $lang1 .')';
         $fileName = str_replace( ' ', '_', $fileName);
 

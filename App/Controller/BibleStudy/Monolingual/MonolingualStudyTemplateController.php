@@ -2,6 +2,7 @@
 namespace App\Controller\BibleStudy\Monolingual;
 
 use App\Model\Bible\BibleModel as BibleModel;
+use App\Model\Language\TranslationModel as TranslationModel;
 
 abstract class MonolingualStudyTemplateController
 {
@@ -52,7 +53,7 @@ abstract class MonolingualStudyTemplateController
         $this->qrcode1 = $this->createQrCode( $this->biblePassage1->getPassageUrl(), $languageCodeHL1);
     }
     protected function setTranslation ($source = 'dbs') {
-        $translation1 = new Translation($this->language1->getLanguageCodeHL(), $source);
+        $translation1 = new TranslationModel($this->language1->getLanguageCodeHL(), $source);
         $this->translation1 = $translation1->getTranslationFile();
     }
     public function getFileName(){
