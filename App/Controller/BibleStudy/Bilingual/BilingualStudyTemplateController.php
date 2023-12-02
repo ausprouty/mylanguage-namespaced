@@ -4,6 +4,7 @@ namespace App\Controller\BibleStudy\Bilingual;
 use App\Controller\BibleStudy\BibleBlockController as BibleBlockController;
 use App\Model\Bible\BibleModel as BibleModel;
 use App\Model\Language\TranslationModel as TranslationModel;
+use App\Model\Language\LanguageModel as LanguageModel;
 
 abstract class BilingualStudyTemplateController
 {
@@ -41,9 +42,9 @@ abstract class BilingualStudyTemplateController
    
     public function __construct( string $languageCodeHL1, string $languageCodeHL2, $lesson)
     {   
-        $this->language1 = new Language;
+        $this->language1 = new LanguageModel();
         $this->language1->findOneByLanguageCodeHL( $languageCodeHL1);
-        $this->language2 = new Language;
+        $this->language2 = new LanguageModel();
         $this->language2->findOneByLanguageCodeHL( $languageCodeHL2);
         $this->bibleBlock = '';
         $this->biblePassage1 = '';

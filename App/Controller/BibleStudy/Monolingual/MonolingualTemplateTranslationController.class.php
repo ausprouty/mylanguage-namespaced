@@ -2,6 +2,7 @@
 namespace App\Controller\BibleStudy\Monolingual;
 
 use App\Model\Language\TranslationModel as TranslationModel;
+use App\Model\Language\LanguageModel as LanguageModel;
 
 class MonolingualTemplateTranslationController {
     
@@ -28,7 +29,7 @@ class MonolingualTemplateTranslationController {
      }
 
      private function setLanguage(){
-         $this->language1 = new Language;
+         $this->language1 = new LanguageModel();
          $this->language1->findOneByLanguageCodeHL($this->languageCodeHL1);
      }
 

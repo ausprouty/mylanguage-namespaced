@@ -3,12 +3,13 @@
 namespace App\Controller\BiblePassage;
 
 
-use App\Controller\BiblePassage\BibleYouVersionPassageController;
-use App\Controller\BiblePassage\BibleWordPassageController;
-use App\Controller\BiblePassage\BibleBrain\BibleBrainTextPlainController;
-use App\Controller\BiblePassage\BibleGateway\BibleGatewayPassageController;
+use App\Controller\BiblePassage\BibleYouVersionPassageController as BibleYouVersionPassageController;
+use App\Controller\BiblePassage\BibleWordPassageController as BibleWordPassageController;
+use App\Controller\BiblePassage\BibleBrain\BibleBrainTextPlainController as BibleBrainTextPlainController;
+use App\Controller\BiblePassage\BibleGateway\BibleGatewayPassageController as  BibleGatewayPassageController;
 use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use App\Model\Language\LanguageModel as LanguageModel;
 
 class PassageSelectController extends BiblePassageModel
 {
@@ -101,7 +102,7 @@ class PassageSelectController extends BiblePassageModel
     }
     private function updateDirection(){
         $languageCodeHL = $this->bible->getLanguageCodeHL();
-        $language = new Language();
+        $language = new LanguageModel();
         $language->findOneByLanguageCodeHL( $languageCodeHL);
         $direction = $language->getDirection();
         $dir = 'ltr';

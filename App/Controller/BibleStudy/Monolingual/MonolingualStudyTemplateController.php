@@ -3,6 +3,7 @@ namespace App\Controller\BibleStudy\Monolingual;
 
 use App\Model\Bible\BibleModel as BibleModel;
 use App\Model\Language\TranslationModel as TranslationModel;
+use App\Model\Language\LanguageModel as LanguageModel;
 
 abstract class MonolingualStudyTemplateController
 {
@@ -36,7 +37,7 @@ abstract class MonolingualStudyTemplateController
    
     public function __construct( string $lesson, $languageCodeHL1)
     {   
-        $this->language1 = new Language;
+        $this->language1 = new LanguageModel();
         $this->language1->findOneByLanguageCodeHL( $languageCodeHL1);
         $this->bibleBlock = '';
         $this->biblePassage1 = '';
