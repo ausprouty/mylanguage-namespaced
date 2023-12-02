@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\Video;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class VideoController extends Video {
 
     // input videoCode is 6_529 -GOLUKE
@@ -10,7 +12,7 @@ class VideoController extends Video {
 
     static function getVideoCodeFromTitle($title, $languageCodeHL){
         $title = str_ireplace('%20', ' ', $title);
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT videoCode FROM jesus_video_languages
             WHERE title = :title AND languageCodeHL = :languageCodeHL
             ORDER BY weight DESC";

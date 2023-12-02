@@ -1,4 +1,5 @@
 <?php
+use  App\Controller\BiblePassage\BibleBrain\BibleBrainTextJsonController;
 echo ("You may be able to modify this so that you can download an entire book (in nice format) and then parse it.  
 Look for the URL ion the BibleBrainJson Controller <hr>");
 $bible = new Bible();

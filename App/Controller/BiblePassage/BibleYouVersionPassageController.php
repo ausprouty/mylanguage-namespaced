@@ -4,7 +4,11 @@
 */
 namespace App\Controller\BiblePassage;
 
-class BibleYouVersionPassageController extends BiblePassage {
+use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use App\Model\Data\WebsiteConnectionModel as WebsiteConnectionModel;
+
+class BibleYouVersionPassageController extends BiblePassageModel {
 
     private $bibleReferenceInfo;
     private $bible;
@@ -52,7 +56,7 @@ class BibleYouVersionPassageController extends BiblePassage {
         $this->referenceLocalLanguage = $this->bookName . ' '. $this->chapterAndVerse;
     }
     private function retrieveBookName(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT name FROM bible_book_names
             WHERE languageCodeHL = :languageCodeHL
             AND bookID = :bookID 
@@ -98,7 +102,7 @@ class BibleYouVersionPassageController extends BiblePassage {
        
     }
     private function saveBookName(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "INSERT INTO bible_book_names
         (bookId, languageCodeHL, name)
         VALUES (:bookId, :languageCodeHL, :name)";
@@ -120,7 +124,7 @@ class BibleYouVersionPassageController extends BiblePassage {
         $chapter = str_replace('%', $bibleBookAndChapter , $this->bible->getExternalId()); // 11/%.NIV   => /111/GEN.1.NIV
         $chapter = str_replace(' ', '%20', $chapter); // some uversion Bibles have a space in their name
         $url = 'https://www.bible.com/bible/'. $chapter;
-        $webpage = new WebsiteConnection($url);
+        $webpage = new WebsiteConnectionModel($url);
         return $webpage->response;
     }
     private function formatExternalText($webpage){

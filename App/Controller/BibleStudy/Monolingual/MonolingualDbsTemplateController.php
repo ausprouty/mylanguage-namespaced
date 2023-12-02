@@ -1,6 +1,9 @@
 <?php
 namespace App\Controller\BibleStudy\Monolingual;
 
+use App\Controller\BibleStudy\DbsStudyController as  DbsStudyController;
+use App\Controller\BibleStudy\Monolingual\MonolingualStudyTemplateController as MonolingualStudyTemplateController;
+
 class MonolingualDbsTemplateController extends MonolingualStudyTemplateController
 {
     protected function createQrCode($url, $languageCodeHL){

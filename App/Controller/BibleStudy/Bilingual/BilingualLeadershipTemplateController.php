@@ -1,6 +1,9 @@
 <?php
 namespace App\Controller\BibleStudy\Bilingual;
 
+use App\Controller\BibleStudy\Bilingual\BilingualStudyTemplateController as BilingualStudyTemplateController;
+use App\Controller\BibleStudy\LeadershipStudyController as LeadershipStudyController;
+
 class BilingualLeadershipTemplateController extends BilingualStudyTemplateController
 {
     protected function createQrCode($url, $languageCodeHL){

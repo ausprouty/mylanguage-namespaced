@@ -1,13 +1,14 @@
 <?php
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 // upgrade BiblePassages to separate reference and link
 
-class BiblePassagesUpgrade extends BiblePassage
+class BiblePassagesUpgrade extends BiblePassageModel
 {
 
     private $dbConnection;
     public function __construct() {
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM bible_passages WHERE dateChecked is NULL LIMIT 1";
         $statement = $this->dbConnection->executeQuery($query, $params = []);
         $data = $statement->fetch(PDO::FETCH_OBJ);

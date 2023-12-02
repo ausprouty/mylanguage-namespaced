@@ -1,5 +1,6 @@
 <?php
-
+    use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+    
     $isoCodes = getIso();
     foreach ($isoCodes as $isoCode){
         $hlCode = getHL($isoCode['languageCodeIso']);
@@ -10,7 +11,7 @@
     }
 
     function getIso(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT distinct languageCodeIso FROM bibles
           WHERE languageCodeHL = :blank";
         $params = array(':blank' => '' );
@@ -19,7 +20,7 @@
         return $isoCodes;
     }
     function getHL($isoCode){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT languageCodeHL FROM hl_languages
             WHERE languageCodeIso = :languageCodeIso
             LIMIT 1";
@@ -29,7 +30,7 @@
         return $hl;
     }
     function updateBible($hlCode, $isoCode){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "UPDATE bibles  SET languageCodeHL = :languageCodeHL
             WHERE languageCodeIso = :languageCodeIso";
        $params = array(

@@ -1,10 +1,13 @@
 <?php
 namespace App\Controller\Tract;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
+
 class TractController extends Tract {
 
     static function findTractByLanguageCodes($languageCodeHL1,$languageCodeHL2){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM hl_bilingual_tracts
             WHERE languageCodeHL = :lang1 AND languageCodeHL2 = :lang2";
         $params = array(':lang1'=> $languageCodeHL1, ':lang2'=> $languageCodeHL2, );

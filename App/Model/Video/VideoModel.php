@@ -1,6 +1,8 @@
 <?php
 namespace App\Model\Video;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class VideoModel
 {
 
@@ -32,7 +34,7 @@ class VideoModel
         $query = "SELECT languageCodeJF FROM jesus_video_languages 
             WHERE languageCodeHL = :languageCodeHL ORDER BY weight DESC LIMIT 1";
         $params= array(':languageCodeHL' => $languageCodeHL);
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $statement = $dbConnection->executeQuery($query, $params);
         $languageCodeJF = $statement->fetch(PDO::FETCH_COLUMN);
         return  $languageCodeJF;
@@ -43,7 +45,7 @@ class VideoModel
             AND title LIKE :following 
             ORDER BY weight DESC LIMIT 1";
         $params= array(':languageCodeHL' => $languageCodeHL, ':following' => '%Following Jesus%');
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $statement = $dbConnection->executeQuery($query, $params);
         $languageCodeJF = $statement->fetch(PDO::FETCH_COLUMN);
         return  $languageCodeJF;
@@ -76,7 +78,7 @@ class VideoModel
         $query = "SELECT videoCode FROM jesus_video_languages 
             WHERE videoCode = :videoCode LIMIT 1";
         $params= array(':videoCode' => $videoCode);
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $statement = $this->dbConnection->executeQuery($query);
         $videoCode = $statement->fetch(PDO::FETCH_COLUMN);
         return  $videoCode;

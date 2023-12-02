@@ -1,6 +1,8 @@
 <?php
 
-$dbConnection = new DatabaseConnection();
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
+$dbConnection = new DatabaseConnectionModel();
 
 $query = "SELECT * FROM jesus_video_languages";
 $statement = $dbConnection->executeQuery($query);

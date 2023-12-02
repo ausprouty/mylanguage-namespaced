@@ -1,6 +1,9 @@
 <?php
 namespace App\Controller\BibleStudy\Bilingual;
 
+use App\Controller\BibleStudy\Bilingual\BilingualStudyTemplateController as BilingualStudyTemplateController;
+use App\Controller\BibleStudy\DbsStudyController as  DbsStudyController;
+
 class BilingualDbsTemplateController extends BilingualStudyTemplateController
 
 

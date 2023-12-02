@@ -1,4 +1,7 @@
 <?php
+
+use App\Controller\BiblePassage\BibleBrain\BibleBrainBibleController;
+
 $languageCodeIso = 'en';
 $bible = new BibleBrainBibleController();
 $bible->getDefaultBible($languageCodeIso);

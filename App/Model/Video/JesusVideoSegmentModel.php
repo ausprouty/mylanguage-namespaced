@@ -2,6 +2,8 @@
 
 namespace App\Model\Video;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class JesusVideoSegmentModel
  {
     private $dbConnection;
@@ -13,7 +15,7 @@ class JesusVideoSegmentModel
    
 
     public function __construct() {
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $this->id = '';
         $this->title = '';
         $this->verses = '';

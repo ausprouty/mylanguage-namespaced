@@ -12,6 +12,8 @@
  */
 namespace App\Model\Bible;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class BibleReferenceInfoModel
 
 {
@@ -31,7 +33,7 @@ class BibleReferenceInfoModel
 
 
    public function __construct(){
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $this->entry= ' ';
         $this->languageCodeHL= null;
         $this->bookName= ' ';

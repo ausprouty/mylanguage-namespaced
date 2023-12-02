@@ -1,6 +1,8 @@
 <?php
 
-$lessons = new DbsStudyController();
+use App\Controller\BibleStudy\LeadershipStudyController as LeadershipStudyController;
+
+$lessons = new LeadershipStudyController();
 if (!isset ($languageCodeHL1)){
     $data = $lessons->formatWithEnglishTitle();
 }

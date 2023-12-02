@@ -1,10 +1,13 @@
 <?php
 namespace App\Controller\BibleStudy;
+
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class LeadershipStudyController{
     private $data;
 
     public function __construct(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM leadership_references
         ORDER BY lesson";
         try {
@@ -42,7 +45,7 @@ class LeadershipStudyController{
         return $formatted;
     }
     static function getTitle($lesson, $languageCodeHL){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         if ($languageCodeHL != 'eng00'){
             $translation = new Translation($languageCodeHL, 'leadership');
         }

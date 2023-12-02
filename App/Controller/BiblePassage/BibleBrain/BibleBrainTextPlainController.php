@@ -2,6 +2,9 @@
 
 
 namespace App\Controller\BiblePassage\BibleBrain;
+
+use App\Controller\BiblePassage\BibleBrain\BibleBrainPassageController;
+
 class BibleBrainTextPlainController extends BibleBrainPassageController
 {
 

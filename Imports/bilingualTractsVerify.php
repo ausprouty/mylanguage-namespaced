@@ -1,4 +1,7 @@
 <?PHP
+
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 echo ('I m verifying bi-lingual tracts');
 verify_database();
 verify_files();
@@ -7,7 +10,7 @@ verify_files();
 
 
 function verify_database(){
-    $dbConnection = new DatabaseConnection();
+    $dbConnection = new DatabaseConnectionModel();
     $query = "SELECT * FROM hl_bilingual_tracts";
     try {
         $statement = $dbConnection->executeQuery($query);
@@ -32,7 +35,7 @@ function verify_database(){
 
 function verify_files(){
     $time = time();
-    $dbConnection = new DatabaseConnection();
+    $dbConnection = new DatabaseConnectionModel();
     $files = scandir( ROOT_RESOURCES . 'bilingualTracts/');
     foreach ($files as $file){
         if (strpos($file, '.html') !== false){

@@ -1,9 +1,10 @@
 <?php
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 
 $file = ROOT_IMPORT_DATA . 'JesusVideoSegments.json';
 $text = file_get_contents($file);
 $results = json_decode($text);
-$dbConnection = new DatabaseConnection();
+$dbConnection = new DatabaseConnectionModel();
 foreach ($results as $data){
     $filmCode = $data->film_code;
     $filmCode = str_replace('1_529-', '', $filmCode);

@@ -1,6 +1,8 @@
 <?php
 namespace App\Model;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class AskQuestionModel{
     private $dbConnection;
     private $id;
@@ -16,7 +18,7 @@ class AskQuestionModel{
     private $weight;
 
     public function __construct(){
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $this->dbConnection= '';
         $this->id= '';
         $this->langaugeCodeHL= '';
@@ -31,7 +33,7 @@ class AskQuestionModel{
         $this->weight= '';
     }
     public function setBestSiteByLanguageCodeHL($code){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM ask_questions 
             WHERE languageCodeHL = :code 
             ORDER BY weight DESC LIMIT 1";
@@ -46,7 +48,7 @@ class AskQuestionModel{
         }
     }
     static function gettBestSiteByLanguageCodeHL($code){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM ask_questions 
             WHERE languageCodeHL = :code 
             ORDER BY weight DESC LIMIT 1";

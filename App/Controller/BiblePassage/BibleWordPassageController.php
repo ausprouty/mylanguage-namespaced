@@ -2,7 +2,9 @@
 
 namespace App\Controller\BiblePassage;
 
-class BibleWordPassageController extends BiblePassage {
+use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
+
+class BibleWordPassageController extends BiblePassageModel {
 
     private $bibleReferenceInfo;
     private $bible;

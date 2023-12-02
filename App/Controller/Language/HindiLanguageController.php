@@ -2,10 +2,13 @@
 
 namespace App\Controller\Language;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
+
 class HindiLanguageController{
     
     public function getLanguageOptions(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT *
                   FROM hl_languages
                   WHERE isHindu  = 'Y'

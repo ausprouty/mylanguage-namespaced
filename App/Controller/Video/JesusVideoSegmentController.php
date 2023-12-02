@@ -1,11 +1,13 @@
 <?php
 namespace App\Controller\Video;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class JesusVideoSegmentController{
     private $data;
 
     public function __construct(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM jesus_video_segments
         ORDER BY id";
         try {

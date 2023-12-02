@@ -3,6 +3,10 @@
 /*  see https://documenter.getpostman.com/view/12519377/Tz5p6dp7
 */
 namespace App\Controller\BiblePassage\BibleBrain;
+
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use App\Model\Data\BibleBrainConnectionModel as BibleBrainConnectionModel;
+
 class BibleBrainPassageController extends BiblePassage {
     private $dbConnection;
     protected $bibleReferenceInfo;
@@ -11,7 +15,7 @@ class BibleBrainPassageController extends BiblePassage {
 
 
     public function __construct( BibleReferenceInfo $bibleReferenceInfo, Bible $bible){
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $this->bibleReferenceInfo = $bibleReferenceInfo;
         $this->bible = $bible;
         $this->referenceLocalLanguage = '';
@@ -33,7 +37,7 @@ class BibleBrainPassageController extends BiblePassage {
         $url = 'https://4.dbt.io/api/bibles/filesets/' . $this->bible->getExternalId();
         $url .= '/'. $this->bibleReferenceInfo->getBookID() . '/'. $this->bibleReferenceInfo->getChapterStart();
         $url .= '?verse_start=' . $this->bibleReferenceInfo->getVerseStart() . '&verse_end=' .$this->bibleReferenceInfo->getVerseEnd();
-        $passage =  new BibleBrainConnection($url);
+        $passage =  new BibleBrainConnectionModel($url);
         $this->response = $passage->response;
     }
     function setPassageUrl(){

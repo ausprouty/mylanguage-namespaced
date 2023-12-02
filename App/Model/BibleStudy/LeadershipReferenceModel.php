@@ -1,5 +1,7 @@
 <?php
 namespace App\Model\BibleStudy;
+
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 //todo  I think this needs a rewrite
 class LeadershipReferenceModel {
     private $dbConnection;
@@ -8,7 +10,7 @@ class LeadershipReferenceModel {
     public $description;
 
     public function __construct($lesson = null, $reference= null, $description= null) {
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $this->lesson = $lesson;
         $this->reference = $reference;
         $this->description = $description;

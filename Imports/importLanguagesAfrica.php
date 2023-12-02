@@ -1,4 +1,6 @@
 <?php
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 $file = ROOT_IMPORT_DATA . 'AfricanLanguages.txt';
 $text = file_get_contents($file);
 $lines = explode("\n", $text);
@@ -26,7 +28,7 @@ function getCountryCode($line){
 }
 
 function  addToDatabase($countryCode, $languageName,$languageCodeIso){
-    $dbConnection = new DatabaseConnection();
+    $dbConnection = new DatabaseConnectionModel();
     $query = "SELECT languageCodeIso FROM country_languages
     WHERE countryCode = :countryCode
     AND languageCodeIso = :languageCodeIso";
@@ -52,7 +54,7 @@ function  addToDatabase($countryCode, $languageName,$languageCodeIso){
 }
 
 function langaugeCodeHL($languageCodeIso, $languageName){
-    $dbConnection = new DatabaseConnection();
+    $dbConnection = new DatabaseConnectionModel();
     $query = "SELECT languageCodeHL FROM hl_languages
         WHERE languageCodeIso = :languageCodeIso
         LIMIT 1";

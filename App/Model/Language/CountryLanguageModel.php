@@ -2,6 +2,8 @@
 
 namespace App\Model\Language;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class CountryLanguageModel
 {
     private $id;
@@ -17,7 +19,7 @@ class CountryLanguageModel
         $this->languageNameEnglish= '';
     }
     static function getLanguagesWithContentForCountry($countryCode){
-       $dbConnection = new DatabaseConnection();
+       $dbConnection = new DatabaseConnectionModel();
        $query = "SELECT *
                   FROM country_languages 
                   WHERE countryCode = :countryCode

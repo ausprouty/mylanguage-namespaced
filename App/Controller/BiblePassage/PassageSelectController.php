@@ -2,7 +2,14 @@
 
 namespace App\Controller\BiblePassage;
 
-class PassageSelectController extends BiblePassage
+use App\Controller\BiblePassage\BibleBrain\BibleBrainTextPlainController;
+use App\Controller\BiblePassage\BibleGateway\BibleGatewayPassageController;
+use  App\Controller\BiblePassage\BibleYouVersionPassageController;
+use  App\Controller\BiblePassage\BibleWordPassageController;
+use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
+class PassageSelectController extends BiblePassageModel
 {
 
     //private $dbConnection;
@@ -14,7 +21,7 @@ class PassageSelectController extends BiblePassage
     public  $referenceLocalLanguage;
 
     public function __construct( BibleReferenceInfo $bibleReferenceInfo, Bible $bible){
-        //$this->dbConnection = new DatabaseConnection();
+        //$this->dbConnection = new DatabaseConnectionModel();
             $this->bibleReferenceInfo=$bibleReferenceInfo;
             $this->bible = $bible;
             $this->passageText= null;
@@ -100,7 +107,7 @@ class PassageSelectController extends BiblePassage
         if ($direction == 'rtl'){
             $dir = 'rtl';
         }
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "UPDATE bibles
             SET direction = :dir
             WHERE languageCodeHL = :languageCodeHL";

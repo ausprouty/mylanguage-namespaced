@@ -2,6 +2,10 @@
 /*  see https://documenter.getpostman.com/view/12519377/Tz5p6dp7
 */
 namespace App\Controller\BiblePassage\BibleBrain;
+
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use App\Model\Data\BibleBrainConnectionModel as BibleBrainConnectionModel;
+
 class BibleBrainLanguageController extends Language {
     private $dbConnection;
     public $languageCodeIso;
@@ -19,7 +23,7 @@ class BibleBrainLanguageController extends Language {
 
 
     public function __construct(){
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         
     }
     /*This endpoint would be used to find all content available for each Bible for a specific language.
@@ -31,7 +35,7 @@ https://4.dbt.io/api/bibles?language_code=HAE&page=1&limit=25
         https://4.dbt.io/api/languages?country=AD&language_code=spa&language_name=spa&include_translations=true&l10n=spa&page=1&limit=25&v=4
     */
         $url = 'https://4.dbt.io/api/languages?country=' . $countryCode;
-        $languages =  new BibleBrainConnection($url);
+        $languages =  new BibleBrainConnectionModel($url);
         $this->response = $languages->response;
         
     }
@@ -48,7 +52,7 @@ https://4.dbt.io/api/bibles?language_code=HAE&page=1&limit=25
         $query = "SELECT languageCodeIso FROM hl_languages 
             WHERE languageCodeBibleBrain IS NULL
             AND checkedBBBibles IS NOT NULL LIMIT 1";
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $statement = $this->dbConnection->executeQuery($query);
         $languageCodeIso = $statement->fetch(PDO::FETCH_COLUMN);
         $this->languageCodeIso = $languageCodeIso;
@@ -99,7 +103,7 @@ https://4.dbt.io/api/bibles?language_code=HAE&page=1&limit=25
     public function getlanguageDetails($languageCodeIso)
     {  
         $url = 'https://4.dbt.io/api/languages?language_code=' .$languageCodeIso ;
-        $languageDetails =  new BibleBrainConnection($url);
+        $languageDetails =  new BibleBrainConnectionModel($url);
         if (isset($languageDetails->response)){
             if (isset($languageDetails->response->data[0])){ 
             $data = $languageDetails->response->data[0];

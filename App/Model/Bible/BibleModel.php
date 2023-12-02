@@ -1,6 +1,8 @@
 <?php
 namespace App\Model\Bible;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class BibleModel {
     private  $dbConnection;
     private $bid;
@@ -30,7 +32,7 @@ class BibleModel {
  
 
     public function __construct(){
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $this->bid = ' ';
         $this->source = ' ';
         $this->externalId = NULL;
@@ -75,7 +77,7 @@ class BibleModel {
     }
     static function oldTestamentAvailable($languageCodeHL){
         $available = FALSE;
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT bid FROM  bibles WHERE languageCodeHL = :languageCodeHL AND
           (collectionCode = :OT OR collectionCode = :AL OR collectionCode = :C ) LIMIT 1";
         $params = array(
@@ -94,7 +96,7 @@ class BibleModel {
     }
    
     static function getAllBiblesByLanguageCodeHL($languageCodeHL){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM bibles WHERE languageCodeHL = :code 
         ORDER BY volumeName";
         $params = array(':code'=>$languageCodeHL);
@@ -109,7 +111,7 @@ class BibleModel {
 
     }
     static function updateWeight($bid, $weight){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "UPDATE bibles 
             SET weight = :weight
             WHERE bid = :bid
@@ -128,7 +130,7 @@ class BibleModel {
 
     }
     static function getTextBiblesByLanguageCodeHL($languageCodeHL){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM bibles 
         WHERE languageCodeHL = :code 
         AND format NOT LIKE :audio AND format NOT LIKE :video AND format != :usx AND format IS NOT NULL
@@ -151,7 +153,7 @@ class BibleModel {
 
     }
     static function getBestBibleByLanguageCodeHL($code){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM bibles 
             WHERE languageCodeHL = :code 
             ORDER BY weight DESC LIMIT 1";
@@ -167,7 +169,7 @@ class BibleModel {
 
     }
     public function setBestBibleByLanguageCodeHL($code){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM bibles 
             WHERE languageCodeHL = :code 
             ORDER BY weight DESC LIMIT 1";
@@ -185,7 +187,7 @@ class BibleModel {
 
     public function setBestDbsBibleByLanguageCodeHL($code, $testament){
         // 'C' for complete will be found AFTER 'NT' or 'OT'
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM bibles 
             WHERE languageCodeHL = :code 
             AND (collectionCode = :complete OR collectionCode = :testament)
@@ -240,7 +242,7 @@ class BibleModel {
         echo ("external id is $this->externalId<br>");
         $query = "SELECT bid  FROM bibles WHERE externalId = :externalId";
         $params = array(':externalId' => $this->externalId);
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $statement = $this->dbConnection->executeQuery($query, $params);
         $bid = $statement->fetch(PDO::FETCH_COLUMN);
         if (!$bid){

@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Controller\BiblePassage\BibleBrain;
+
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use App\Model\Data\BibleBrainConnectionModel as BibleBrainConnectionModel;
 /*  see https://documenter.getpostman.com/view/12519377/Tz5p6dp7
 */
 class BibleBrainBibleController extends Bible {
@@ -10,7 +13,7 @@ class BibleBrainBibleController extends Bible {
 
 
     public function __construct(){
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         
     }
     /*This endpoint would be used to find all content available for each Bible for a specific language.
@@ -21,7 +24,7 @@ https://4.dbt.io/api/bibles?language_code=HAE&page=1&limit=25
         $url = 'https://4.dbt.io/api/bibles?language_code=';
         $url .=  strtoupper($languageCodeIso) ;
         $url .= '&page=1&limit='. $limit;
-        $bibles =  new BibleBrainConnection($url);
+        $bibles =  new BibleBrainConnectionModel($url);
         $this->response = $bibles->response->data;
 
     }
@@ -30,14 +33,14 @@ https://4.dbt.io/api/bibles?language_code=HAE&page=1&limit=25
     }
     public function getFormatTypes(){
         $url = 'https://4.dbt.io/api/bibles/filesets/media/types?';
-        $formatTypes =  new BibleBrainConnection($url);
+        $formatTypes =  new BibleBrainConnectionModel($url);
         $this->response = $formatTypes->response;
         return $formatTypes->response;;
 
     }
     public function getDefaultBible($languageCodeIso){
         $url ='https://4.dbt.io/api/bibles/defaults/types?language_code='. $languageCodeIso;
-        $bible =  new BibleBrainConnection($url);
+        $bible =  new BibleBrainConnectionModel($url);
         $this->response = $bible->response;
     }
     public function getNextLanguageforBibleImport(){
@@ -45,7 +48,7 @@ https://4.dbt.io/api/bibles?language_code=HAE&page=1&limit=25
             WHERE languageCodeBibleBrain IS NOT NULL
             AND checkedBBBibles IS NULL LIMIT 1";
     
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $statement = $this->dbConnection->executeQuery($query);
         $languageCodeIso = $statement->fetch(PDO::FETCH_COLUMN);
         $this->languageCodeIso = $languageCodeIso;
@@ -101,7 +104,7 @@ https://4.dbt.io/api/bibles?language_code=HAE&page=1&limit=25
            SET checkedBBBibles = :today 
            WHERE languageCodeIso = :languageCodeIso";
         $params = [':today'=> date('Y-m-d'), ':languageCodeIso'=> $this->languageCodeIso];
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $this->dbConnection->executeQuery($query, $params);
     }
 }

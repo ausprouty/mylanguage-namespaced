@@ -6,6 +6,9 @@ Save in /imports/data as json
 
 This will see if we haved all countries
 */
+
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 $filename = ROOT_IMPORT_DATA . 'LanguageCountry.json';
 
 if (!file_exists($filename)){
@@ -24,7 +27,7 @@ foreach ($results as $data){
     //updateLanguageEthnicName($data->LanguageNameNativeScript, $languageCodeHL);
 }
 function getCountryCodeIso($data){
-    $dbConnection = new DatabaseConnection();
+    $dbConnection = new DatabaseConnectionModel();
     $query = 'SELECT countryCodeIso 
     FROM country_locations
     WHERE countryNameEnglish = :countryNameEnglish';
@@ -64,7 +67,7 @@ function getLanguageCodeHLFromVideoLink($data){
     return $languageCodeHL;
 }
 function getLanguageCodeHLFromLanguage($data){
-    $dbConnection = new DatabaseConnection();
+    $dbConnection = new DatabaseConnectionModel();
     $query = 'SELECT languageCodeHL
     FROM hl_languages
     WHERE name = :name';
@@ -74,7 +77,7 @@ function getLanguageCodeHLFromLanguage($data){
     return $languageCodeHL;
 }
 function updateLanguageCountryCode($countryCodeIso, $languageCodeHL){
-    $dbConnection = new DatabaseConnection();
+    $dbConnection = new DatabaseConnectionModel();
     $query = 'UPDATE hl_languages 
     SET countryCodeIso = :countryCodeIso
     WHERE  languageCodeHL = :languageCodeHL';
@@ -83,7 +86,7 @@ function updateLanguageCountryCode($countryCodeIso, $languageCodeHL){
     $statement = $dbConnection->executeQuery($query, $params);
 }
 function updateLanguageEthnicName($LanguageNameNativeScript, $languageCodeHL){
-    $dbConnection = new DatabaseConnection();
+    $dbConnection = new DatabaseConnectionModel();
     $query = 'SELECT  ethnicName FROM  hl_languages 
     WHERE  languageCodeHL = :languageCodeHL';
     $params = array(':languageCodeHL'=> $languageCodeHL);

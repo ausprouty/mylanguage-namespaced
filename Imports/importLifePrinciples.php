@@ -1,10 +1,11 @@
 <?php
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 
 $file = ROOT_IMPORT_DATA . 'LifePrinciples.json';
 $text = file_get_contents($file);
 $results = json_decode($text);
-$dbConnection = new DatabaseConnection();
+$dbConnection = new DatabaseConnectionModel();
 foreach ($results as $data){
     $title =  strtolower($data->title);
     $question = 'What does this passage say about '.  $title ; 

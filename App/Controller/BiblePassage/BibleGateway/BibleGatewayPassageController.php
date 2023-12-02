@@ -2,7 +2,11 @@
 
 namespace App\Controller\BiblePassage\BibleGateway;
 
-class BibleGatewayPassageController extends BiblePassage {
+use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
+use App\Model\Data\WebsiteConnectionModel as WebsiteConnectionModel;
+
+
+class BibleGatewayPassageController extends BiblePassageModel {
 
     private $bibleReferenceInfo;
     private $bible;
@@ -33,7 +37,7 @@ class BibleGatewayPassageController extends BiblePassage {
 */
 	    $reference_shaped = str_replace(' ' , '%20', $this->bibleReferenceInfo->getEntry());
         $this->passageUrl= 'https://biblegateway.com/passage/?search='. $reference_shaped . '&version='. $this->bible->getExternalId() ;
-        $webpage = new WebsiteConnection($this->passageUrl);
+        $webpage = new WebsiteConnectionModel($this->passageUrl);
         if ($webpage->response){
             $this->passageText =  $this->formatExternal($webpage->response);
         }

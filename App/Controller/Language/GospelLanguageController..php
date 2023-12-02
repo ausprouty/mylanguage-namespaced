@@ -1,9 +1,13 @@
 <?php
 namespace App\Controller\Language;
+
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
+
 class GospelLanguageController{
     
     public function getBilingualOptions(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT languageCodeHL1, languageCodeHL2, name, webpage
                   FROM hl_bilingual_tracts 
                   WHERE valid != 0

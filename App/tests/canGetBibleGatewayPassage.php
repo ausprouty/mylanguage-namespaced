@@ -1,4 +1,7 @@
 <?php
+
+use App\Controller\BiblePassage\BibleGateway\BibleGatewayPassageController;
+
 $bible=new Bible();
 $bible->selectBibleByBid(1237);
 $bibleReferenceInfo = new BibleReferenceInfo();

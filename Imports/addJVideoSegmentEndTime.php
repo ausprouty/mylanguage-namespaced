@@ -1,5 +1,8 @@
 <?php
-$dbConnection = new DatabaseConnection();
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
+
+$dbConnection = new DatabaseConnectionModel();
 $filename = ROOT_IMPORT_DATA . 'JesusClipEndings.txt';
 $datafile = file_get_contents($filename);
 $count = 0;

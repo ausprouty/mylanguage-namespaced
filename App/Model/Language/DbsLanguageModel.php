@@ -2,6 +2,8 @@
 
 namespace App\Model\Language;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class DbsLanguageModel  {
     private $languageCodeHL;
     private $collectionCode; //  'C' for complete  'NT' for New Testament
@@ -14,7 +16,7 @@ class DbsLanguageModel  {
         $this->updateDatabase();
     }
     protected function updateDatabase(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT languageCodeHL FROM dbs_languages 
             WHERE languageCodeHL = :code 
             LIMIT 1";
@@ -34,7 +36,7 @@ class DbsLanguageModel  {
         }
     }
     private function updateRecord(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "UPDATE  dbs_languages
             SET collectionCode = :collectionCode, format = :format
             WHERE languageCodeHL = :languageCodeHL 
@@ -51,7 +53,7 @@ class DbsLanguageModel  {
         }
     }
     private function insertRecord(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "INSERT INTO dbs_languages 
             (languageCodeHL, collectionCode, format)
             VALUES  (:languageCodeHL, :collectionCode, :format)";

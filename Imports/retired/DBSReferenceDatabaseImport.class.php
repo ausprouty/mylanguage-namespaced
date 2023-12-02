@@ -1,10 +1,11 @@
 <?php
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 
 class  DBSReferenceDatabaseImport{
   private  $dbConnection;
 
  public function __construct(){
-    $this->dbConnection = new DatabaseConnection();
+    $this->dbConnection = new DatabaseConnectionModel();
 }
 
 public function getLessons()

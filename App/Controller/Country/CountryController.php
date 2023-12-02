@@ -2,10 +2,13 @@
 
 namespace App\Controller\Country;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
+
 Class CounntryController extends Country {
 
     static function getCountryByIsoCode($countryCodeIso){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT *
                   FROM country_locations 
                   WHERE countryCodeIso = :countryCodeIso";
@@ -20,7 +23,7 @@ Class CounntryController extends Country {
         }
     }
     static function getCountryByIsoCode3($countryCodeIso3){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT *
                   FROM country_locations 
                   WHERE countryCodeIso3 = :countryCodeIso3";
@@ -35,7 +38,7 @@ Class CounntryController extends Country {
         }
     }
     protected function updateCountryCodeIso3($countryCodeIso, $countryCodeIso3){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "UPDATE country_locations 
                 SET countryCodeIso3 = :countryCodeIso3
                   WHERE countryCodeIso = :countryCodeIso";
@@ -51,7 +54,7 @@ Class CounntryController extends Country {
         }
     }
     protected function updateCountryNamefromCodeIso($countryCodeIso, $countryName){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "UPDATE country_locations 
                 SET countryName = :countryName
                   WHERE countryCodeIso = :countryCodeIso";

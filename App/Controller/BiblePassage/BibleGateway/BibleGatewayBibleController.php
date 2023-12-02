@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\BiblePassage\BibleGateway;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class BibleGatewayBibleController{
 
 /*
@@ -112,7 +114,7 @@ class BibleGatewayBibleController{
         }
     }
     private function tryLanguageCodeIso($try){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT languageCodeIso FROM hl_languages
             WHERE languageCodeIso = :languageCodeIso LIMIT 1";
         $params = array(':languageCodeIso'=> $try, 
@@ -122,7 +124,7 @@ class BibleGatewayBibleController{
        return $languageCodeIso;
     }
     private function tryLanguageCodeGoogle($try){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT languageCodeIso FROM hl_languages
             WHERE languageCodeGoogle = :languageCode LIMIT 1";
         $params = array(':languageCode'=> $try, 
@@ -132,7 +134,7 @@ class BibleGatewayBibleController{
        return $languageCodeIso;
     }
     private function tryLanguageCodeBrowser($try){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT languageCodeIso FROM hl_languages
             WHERE languageCodeBrowser = :languageCode LIMIT 1";
         $params = array(':languageCode'=> $try, 
@@ -152,7 +154,7 @@ class BibleGatewayBibleController{
 
     }
     private function recordExists(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT bid FROM bibles 
             WHERE source = :biblegateway AND
             externalId = :externalId LIMIT 1";
@@ -170,7 +172,7 @@ class BibleGatewayBibleController{
     }
     private function updateVerified($bid){
         $verified = date('Y-m-d');
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "UPDATE bibles 
             SET dateVerified = :verified
             WHERE bid = :bid 
@@ -181,7 +183,7 @@ class BibleGatewayBibleController{
         $statement = $dbConnection->executeQuery($query, $params);
     }
     private function updateLanguage($bid){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "UPDATE bibles 
             SET languageCodeIso = :languageCodeIso,
             languageName = :languageName
@@ -202,7 +204,7 @@ class BibleGatewayBibleController{
         if ($this->externalId == $this->defaultBible){
             $weight = 9;
         }
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "INSERT INTO bibles 
         (source, externalId, volumeName, languageName, languageCodeIso, 
         collectionCode, format, text, weight , dateVerified) 
@@ -225,7 +227,7 @@ class BibleGatewayBibleController{
 
     }
     private function addNewLanguage($try){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "INSERT INTO hl_languages 
         (languageCodeHL, languageCodeIso, ethnicName ) 
         VALUES 
@@ -242,7 +244,7 @@ class BibleGatewayBibleController{
         if ($this->externalId == $this->defaultBible){
             $weight = 9;
         }
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "UPDATE bibles 
             SET weight = :weight
             WHERE bid = :bid 

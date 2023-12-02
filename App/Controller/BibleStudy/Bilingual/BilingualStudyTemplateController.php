@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\BibleStudy\Bilingual;
 
+use App\Controller\BibleStudy\BibleBlockController as BibleBlockController;
+
 abstract class BilingualStudyTemplateController
 {
     protected  $bible1;

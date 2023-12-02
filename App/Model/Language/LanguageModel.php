@@ -2,6 +2,8 @@
 
 namespace App\Model\Language;
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 class LanguageModel
 
 {
@@ -23,7 +25,7 @@ class LanguageModel
     private $fontData; // array used by PDFContoller;
 
     public function __construct(){
-            $this->dbConnection = new DatabaseConnection();
+            $this->dbConnection = new DatabaseConnectionModel();
         }
 
     public function findOneByLanguageCodeHL($languageCodeHL){
@@ -66,7 +68,7 @@ class LanguageModel
     }
    
     static function getCodeIsoFromCodeHL ($languageCodeHL){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT languageCodeIso
             FROM hl_languages
             WHERE languageCodeHL = :languageCodeHL
@@ -84,7 +86,7 @@ class LanguageModel
 
     }
     static function getEnglishNameFromCodeHL ($languageCodeHL){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT name
             FROM hl_languages
             WHERE languageCodeHL = :languageCodeHL
@@ -100,7 +102,7 @@ class LanguageModel
         }
     }
     static function getFontDataFromCodeHL($languageCodeHL){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT fontData
             FROM hl_languages
             WHERE languageCodeHL = :languageCodeHL
@@ -185,7 +187,7 @@ class LanguageModel
             ':ethnicName'=> $record->autonym, 
             ':languageCodeBibleBrain'=> $record->id
         );
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $this->dbConnection->executeQuery($query, $params);
 
     }
@@ -194,7 +196,7 @@ class LanguageModel
         $query = 'SELECT id FROM hl_languages WHERE languageCodeIso = :languageCodeIso LIMIT 1';
         $params = array(':languageCodeIso' => $languageCodeIso);
         try {
-            $this->dbConnection = new DatabaseConnection();
+            $this->dbConnection = new DatabaseConnectionModel();
             $statement = $this->dbConnection->executeQuery($query, $params);
             $id = $statement->fetch(PDO::FETCH_COLUMN);
             return $id;
@@ -208,7 +210,7 @@ class LanguageModel
         $query = 'SELECT ethnicName FROM hl_languages WHERE languageCodeIso = :languageCodeIso';
         $params = array(':languageCodeIso' => $languageCodeIso);
         try {
-            $this->dbConnection = new DatabaseConnection();
+            $this->dbConnection = new DatabaseConnectionModel();
             $statement = $this->dbConnection->executeQuery($query, $params);
             $ethnicNames = $statement->fetchALL(PDO::FETCH_COLUMN);
             return $ethnicNames;
@@ -222,7 +224,7 @@ class LanguageModel
              WHERE languageCodeIso = :languageCodeIso';
         $params = array(':languageCodeIso' => $languageCodeIso, ':ethnicName'=> $ethnicName
         );
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $this->dbConnection->executeQuery($query, $params);
     }
     protected function UpdateLanguageCodeBibleBrainFromIso($languageCodeIso, $languageCodeBibleBrain)
@@ -232,7 +234,7 @@ class LanguageModel
         $params = array(
             ':languageCodeIso' => $languageCodeIso, ':languageCodeBibleBrain' => $languageCodeBibleBrain
         );
-        $this->dbConnection = new DatabaseConnection();
+        $this->dbConnection = new DatabaseConnectionModel();
         $this->dbConnection->executeQuery($query, $params);
     }
 }

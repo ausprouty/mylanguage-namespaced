@@ -1,5 +1,7 @@
 <?php
 
+use  App\Controller\BiblePassage\BibleBrain\BibleBrainTextJsonController;
+
 $bible = new Bible();
 $bible->selectBibleByBid(4092);
 $bibleReferenceInfo = new BibleReferenceInfo();

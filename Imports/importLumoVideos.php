@@ -1,9 +1,11 @@
 <?php
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 $file = ROOT_IMPORT_DATA . 'Lumo.json';
 $text = file_get_contents($file);
 $results = json_decode($text);
-$dbConnection = new DatabaseConnection();
+$dbConnection = new DatabaseConnectionModel();
 foreach ($results as $lumo){
     $jfCode = '1_' . $lumo->JFCpde . '-jf%';
     writeLogAppend('lumo-9', $jfCode);
@@ -39,7 +41,7 @@ foreach ($results as $lumo){
 }
 
 function insertIntoDatabase($filmCode, $filmTitle, $data){
-    $dbConnection = new DatabaseConnection();
+    $dbConnection = new DatabaseConnectionModel();
     $query = "INSERT INTO jesus_video_languages (title, language, languageEthnic, languageCodeIso, languageCodeHL, filmCode)  
         VALUES (:title, :language, :languageEthnic, :languageCodeIso, :langugeCodeHL, :filmCode)";
     $params = array(

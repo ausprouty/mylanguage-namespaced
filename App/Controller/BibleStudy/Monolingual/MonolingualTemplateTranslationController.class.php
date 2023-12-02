@@ -33,7 +33,7 @@ class MonolingualTemplateTranslationController {
      private function setTemplate(){
         $filename = ROOT_TEMPLATES . $this->templateName .'.template.html';
         if (!file_exists($filename)){
-            writeLogError('BilingualTemplateTranslationController-28', 'ERROR - no such template as ' . $filename);
+            writeLogError('MonolingualTemplateTranslationController-28', 'ERROR - no such template as ' . $filename);
             return null;
         }
         $this->template = file_get_contents($filename);

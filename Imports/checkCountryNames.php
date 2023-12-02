@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 /*
 working with Data supplied by VAnce Nordman
 Save in /imports/data as json
@@ -16,7 +17,7 @@ if (!file_exists($filename)){
     return;
 
 }
-$dbConnection = new DatabaseConnection();
+$dbConnection = new DatabaseConnectionModel();
 $results = json_decode (file_get_contents($filename));
 foreach ($results as $data){
     $query = 'SELECT countryCodeIso FROM country_locations WHERE countryNameEnglish = :countryNameEnglish';

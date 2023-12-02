@@ -1,5 +1,7 @@
 <?php
-$dbConnection = new DatabaseConnection();
+
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+$dbConnection = new DatabaseConnectionModel();
 $titles = array(
     '1-0-0' => 'Following Jesus (India), 1. Who Is God?',
     '2-0-0' => 'Following Jesus (India), 2. Who Is Jesus?',

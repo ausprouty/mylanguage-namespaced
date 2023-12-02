@@ -1,6 +1,8 @@
 <?php
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
 echo ('I m inporting tracts');
-$dbConnection = new DatabaseConnection();
+$dbConnection = new DatabaseConnectionModel();
 
 $query = "SELECT * FROM hl_bilingual_tracts";
 try {

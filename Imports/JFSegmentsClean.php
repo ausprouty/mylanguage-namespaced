@@ -1,9 +1,9 @@
 <?php
 
-
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 // get rid of /https://api.arclight.org/videoPlayerUrl?refId=
 
-$dbConnection = new DatabaseConnection();
+$dbConnection = new DatabaseConnectionModel();
 $query = "SELECT * FROM jesus_video_segments";
 $statement = $dbConnection->executeQuery($query);
 $results = $statement->fetchAll(PDO::FETCH_OBJ);

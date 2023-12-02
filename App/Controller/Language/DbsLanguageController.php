@@ -1,5 +1,9 @@
 <?php
 namespace App\Controller\Language;
+
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+
+
 class DbsLanguageController{
 
     public function updateDatabase(){
@@ -24,7 +28,7 @@ class DbsLanguageController{
         }
     }
     public function getOptions(){
-        $dbConnection = new DatabaseConnection();
+        $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT dbs_languages.*, hl_languages.name,  hl_languages.ethnicName
                   FROM dbs_languages INNER JOIN hl_languages
                   ON dbs_languages.languageCodeHL = hl_languages.languageCodeHL

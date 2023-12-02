@@ -1,10 +1,11 @@
 <?php
 
+use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 
 $file = ROOT_IMPORT_DATA . 'LeadershipStudies.json';
 $text = file_get_contents($file);
 $results = json_decode($text);
-$dbConnection = new DatabaseConnection();
+$dbConnection = new DatabaseConnectionModel();
 foreach ($results as $data){
     $query = "INSERT INTO leadership_references (lesson, reference, testament, description)  
         VALUES (:lesson, :reference, :testament, :description)";

@@ -2,6 +2,9 @@
 
 namespace App\Controller\BiblePassage\BibleBrain;
 
+use App\Controller\BiblePassage\BibleBrain\BibleBrainPassageController;
+use App\Model\Data\CloudFrontConnectionModel as CloudFrontConnectionModel;
+
 class BibleBrainTextJsonController extends BibleBrainPassageController
 {
 
@@ -46,7 +49,7 @@ class BibleBrainTextJsonController extends BibleBrainPassageController
   }
 
   private function getPassageJson($url){
-      $json =  new CloudFrontConnection($url);
+      $json =  new CloudFrontConnectionModel($url);
       $this->json = $json->response;
   }
   public function getJson(){
