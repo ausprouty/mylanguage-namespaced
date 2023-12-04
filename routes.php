@@ -2,14 +2,16 @@
 $dir = __DIR__ ;
 require_once __DIR__ .'/router.php';
 if ( $dir == '/home/mylanguagenet/api.mylanguage.net.au'){
-    require_once $dir .'/configuration/.env.remote.php';
+    require_once $dir .'/App/Configuration/.env.remote.php';
 }
 else{
-    require_once $dir .'/configuration/.env.local.php';
+    require_once $dir .'/App/Configuration/.env.local.php';
 }
-require_once  __DIR__.'/configuration/class-autoload.inc.php';
+require_once  __DIR__.'/App/Configuration/my-autoload.inc.php';
 ##################################################
-require_once __DIR__.'/includes/writeLog.php';
+require_once __DIR__.'/App/Includes/writeLog.php';
+writeLogDebug('routes', 'We are in routes');
+writeLogDebug('WEB_ROOT', WEB_ROOT);
 
 //API
 get(WEB_ROOT . 'api/ask/$languageCodeHL', 'App/API/askQuestions.php');
@@ -65,13 +67,13 @@ post(WEB_ROOT . 'api/secure/bibles/weight/change', 'App/API/secure/bibleWeightCh
 
 // Index
 
-get(WEB_ROOT . 'remote', 'views/indexRemote.php');
+get(WEB_ROOT . 'remote', 'App/views/indexRemote.php');
 
 
-if (WEB_ROOT == '/mylanguage-api/'){
-    get(WEB_ROOT , 'views/index.php');
-    get(WEB_ROOT , 'views/indexLocal.php');
-    get(WEB_ROOT . 'local', 'views/indexLocal.php');
+if (WEB_ROOT == '/mylanguage-namespaced/'){
+  //  get(WEB_ROOT , 'App/Views/index.php');
+    get(WEB_ROOT , 'App/Views/indexLocal.php');
+    get(WEB_ROOT . 'local', '/App/Views/indexLocal.php');
     // Imports
 
     get(WEB_ROOT . 'import/bible/externalId', 'imports/updateBibleExternalId.php');
@@ -140,12 +142,12 @@ if (WEB_ROOT == '/mylanguage-api/'){
     get(WEB_ROOT . 'test/dbs/pdf',  'App/Tests/canPrintDbsPdf.php');
 
 
-    /Bibles
+    //Bibles
     get (WEB_ROOT. 'test/bibles/best',  'App/Tests/canGetBestBibleByLanguageCodeHL.php');
     get (WEB_ROOT. 'test/passage/select',  'App/Tests/passageSelectControllerTest.php');
     get(WEB_ROOT . 'test/bible',  'App/Tests/biblePassageControllerTest.php');
 
-    /Database
+    //Database
     get(WEB_ROOT . 'test/language/hl',  'App/Tests/canGetLanguageFromHL.php');
 
 
@@ -158,9 +160,9 @@ if (WEB_ROOT == '/mylanguage-api/'){
     get(WEB_ROOT . 'test/passage/stored',  'App/Tests/canSeePassageStored.php');
 
 }
-/ any can be used for GETs or POSTs
+// any can be used for GETs or POSTs
 
-/ For GET or POST
-/ The 404.php which is inside the tests folder will be called
-/ The 404.php has access to $_GET and $_POST
-any('/404','views/404.php');
+// For GET or POST
+// The 404.php which is inside the tests folder will be called
+// The 404.php has access to $_GET and $_POST
+any('/404','/App/Views/404.php');

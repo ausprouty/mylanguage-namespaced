@@ -1,6 +1,8 @@
 <?php
 namespace App\Model\Data;
 
+use PDO as PDO;
+
 class DatabaseConnectionModel{
     private $dbConnection;
     private $host;

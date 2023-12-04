@@ -1,5 +1,7 @@
 <?php
 
+use App\Controller\BiblePassage\BibleBrain\BibleBrainLanguageController as BibleBrainLanguageController;
+
 /*
 Get list of languages from https://www.faithcomesbyhearing.com/bible-brain-available-content
 Download

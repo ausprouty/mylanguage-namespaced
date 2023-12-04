@@ -29,9 +29,16 @@ class WebsiteConnectionModel
                 CURLOPT_CUSTOMREQUEST => 'GET',
             ));
             $this->response = curl_exec($curl);
-        
-        } catch (PDOException $e) {
-                throw new Exception("Failed to connect to the website: " . $e->getMessage());
+    
+            // Check for cURL errors
+            if (curl_errno($curl)) {
+                throw new Exception("cURL error: " . curl_error($curl));
+            }
+    
+            curl_close($curl);
+    
+        } catch (Exception $e) {
+            throw new Exception("Failed to connect to the website: " . $e->getMessage());
         }
     }
     protected function decode(){

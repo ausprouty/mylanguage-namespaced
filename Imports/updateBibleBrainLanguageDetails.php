@@ -1,4 +1,6 @@
 <?php
+use App\Controller\BiblePassage\BibleBrain\BibleBrainLanguageController as BibleBrainLanguageController;
+
 $max = 1;
 echo ("You should see the languageCodeIso below that you are updating Language Details for<br>");
 echo ("This routine is driven by the values of checkedBBBibles in hl_languages");

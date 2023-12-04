@@ -1,0 +1,1 @@
+string(20) "We are in IndexLocal"

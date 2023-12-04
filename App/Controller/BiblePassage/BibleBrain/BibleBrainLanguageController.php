@@ -5,8 +5,9 @@ namespace App\Controller\BiblePassage\BibleBrain;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Data\BibleBrainConnectionModel as BibleBrainConnectionModel;
+use App\Model\Language\LanguageModel as LanguageModel;
 
-class BibleBrainLanguageController extends Language {
+class BibleBrainLanguageController extends LanguageModel {
     private $dbConnection;
     public $languageCodeIso;
     public $response;

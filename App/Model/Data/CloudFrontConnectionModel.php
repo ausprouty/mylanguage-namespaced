@@ -26,10 +26,23 @@ class CloudFrontConnectionModel
                 CURLOPT_CUSTOMREQUEST => 'GET',
             ));
             $data = curl_exec($curl);
+    
+            // Check for cURL errors
+            if (curl_errno($curl)) {
+                throw new Exception("cURL error: " . curl_error($curl));
+            }
+    
+            curl_close($curl);
+    
+            // Decode the JSON response
             $this->response = json_decode($data);
-        } catch (PDOException $e) {
-                throw new Exception("Failed to connect to the website: " . $e->getMessage());
-                writeLogDebug('CloudFrontConnection-34', $e->getMessage());
+    
+        } catch (Exception $e) {
+            // Log the exception
+            writeLogDebug('CloudFrontConnection-34', $e->getMessage());
+    
+            // Rethrow the exception for further handling
+            throw new Exception("Failed to connect to the website: " . $e->getMessage());
         }
     }
 

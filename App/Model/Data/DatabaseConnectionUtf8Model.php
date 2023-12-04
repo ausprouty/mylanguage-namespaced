@@ -1,6 +1,8 @@
 <?php
 namespace App\Model\Data;
 
+use PDO as PDO;
+
 class DatabaseConnectionUtf8Model{
     private $dbConnection;
     private $host;
