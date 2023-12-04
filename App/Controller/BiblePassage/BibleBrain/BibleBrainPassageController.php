@@ -6,15 +6,18 @@ namespace App\Controller\BiblePassage\BibleBrain;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Data\BibleBrainConnectionModel as BibleBrainConnectionModel;
+use App\Model\Bible\BibleModel as BibleModel;
+use App\Model\Bible\BiblePassageModel as BiblePassageModel;
+use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
 
-class BibleBrainPassageController extends BiblePassage {
+class BibleBrainPassageController extends BiblePassageModel {
     private $dbConnection;
     protected $bibleReferenceInfo;
     protected $bible;
     public $response;
 
 
-    public function __construct( BibleReferenceInfo $bibleReferenceInfo, Bible $bible){
+    public function __construct( BibleReferenceInfoModel $bibleReferenceInfo, BibleModel $bible){
         $this->dbConnection = new DatabaseConnectionModel();
         $this->bibleReferenceInfo = $bibleReferenceInfo;
         $this->bible = $bible;
@@ -51,6 +54,57 @@ class BibleBrainPassageController extends BiblePassage {
     }
     function getBibleLanguageEnglish(){
         return $this->bible->languageEnglish;
+    }
+    public function formatPassageText()
+    {   $text = null;
+        $multiVerseLine = false;
+        $startVerseNumber = null;
+        if (!isset($this->response->data)){
+            $this->passageText = NULL;
+            return $this->passageText;
+        }
+        foreach ($this->response->data as $verse){
+            if (!isset($verse->verse_text)){
+                $text = NULL;
+                break;
+            }
+            $verseNum = $verse->verse_start_alt;
+            if ($multiVerseLine){
+                $multiVerseLine = false;
+                $verseNum = $startVerseNumber . '-' . $verse->verse_end_alt;
+            }
+            if ($verse->verse_text == '-'){
+                $multiVerseLine = true;
+                $startVerseNumber = $verse->verse_start_alt;
+            }
+            if ($verse->verse_text != '-') {
+                $text .= '<p><sup class="versenum">' . $verseNum . '</sup> '. $verse->verse_text . '</p>';
+            }
+
+        }
+         $this->passageText = $text;
+        return $this->passageText;
+    }
+
+    public function setReferenceLocalLanguage(){
+        $this->referenceLocalLanguage = $this->getBookNameLocalLanguage();
+        $this->referenceLocalLanguage .= ' '. $this->bibleReferenceInfo->getChapterStart() . ':' .
+        $this->bibleReferenceInfo->getVerseStart()  .'-' .$this->bibleReferenceInfo->getVerseEnd();
+    }
+    public function getReferenceLocalLanguage(){
+        return $this->referenceLocalLanguage;
+    }
+
+    public function getBookNameLocalLanguage(){
+        if (!isset($this->response->data)){
+           return $this->bibleReferenceInfo->getBookName();
+        }
+        if (isset($this->response->data[0]->book_name_alt)){ 
+            return $this->response->data[0]->book_name_alt;
+        }
+        else{
+            return null;
+        }
     }
 
 }

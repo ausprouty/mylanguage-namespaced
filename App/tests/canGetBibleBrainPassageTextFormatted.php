@@ -8,7 +8,7 @@ echo ("You should see a nicely formatted text below with verse numbers.<hr>");
 $bible = new BibleModel();
 $bible->selectBibleByBid(6349);
 $bibleReferenceInfo = new BibleReferenceInfoModel();
-$bibleReferenceInfo->setFromPassage('Luke 1:1-6');
+$bibleReferenceInfo->setFromEntry('Luke 1:1-6');
 
 $passage = new BibleBrainTextPlainController($bibleReferenceInfo, $bible);
 $passage->getExternal();

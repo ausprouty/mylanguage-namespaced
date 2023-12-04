@@ -2,6 +2,8 @@
 
 namespace App\Controller\BiblePassage\BibleGateway;
 
+use App\Model\Bible\BibleModel as BibleModel;
+use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
 use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
 use App\Model\Data\WebsiteConnectionModel as WebsiteConnectionModel;
 
@@ -12,7 +14,7 @@ class BibleGatewayPassageController extends BiblePassageModel {
     private $bible;
 
 
-    public function __construct( BibleReferenceInfo $bibleReferenceInfo, Bible $bible){
+    public function __construct( BibleReferenceInfoModel $bibleReferenceInfo, BibleModel $bible){
  
         $this->bibleReferenceInfo=$bibleReferenceInfo;
         $this->bible = $bible;

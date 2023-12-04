@@ -7,7 +7,7 @@ use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
 $bible=new BibleModel();
 $bible->selectBibleByBid(1237);
 $bibleReferenceInfo = new BibleReferenceInfoModel();
-$bibleReferenceInfo->setFromPassage('Luke 1:1-80');
+$bibleReferenceInfo->setFromEntry('Luke 1:1-80');
 
 $passage= new BibleGatewayPassageController($bibleReferenceInfo, $bible);
 $passage->getExternal();

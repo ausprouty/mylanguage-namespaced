@@ -1,1 +1,1 @@
-string(19) "App/Model/Bible/PDO"
+string(46) "App/Model/BiblePassage/Bible/BiblePassageModel"

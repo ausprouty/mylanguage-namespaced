@@ -57,9 +57,9 @@ echo "
 <p><a href = '/mylanguage-namespaced/test/biblebrain/languages/country'>Languages for Country -OK</a></p>
 <p><a href = '/mylanguage-namespaced/test/biblebrain/bible/default'>Default Bible for Language -OK</a></p>
 <p><a href = '/mylanguage-namespaced/test/biblebrain/bible/formats'>Format Types -OK<</a></p>
-<p><a href = '/mylanguage-namespaced/test/biblebrain/passage/json'>Bible Text Json</a></p>
+<p><a href = '/mylanguage-namespaced/test/biblebrain/passage/json'>Bible Text Json -OK</a></p>
 <p><a href = '/mylanguage-namespaced/test/biblebrain/passage/plain'>Bible Text Plain</a></p>
-<p><a href = '/mylanguage-namespaced/test/biblebrain/passage/formatted'>Bible Text Formatted</a></p>
+<p><a href = '/mylanguage-namespaced/test/biblebrain/passage/formatted'>Bible Text Formatted -OK</a></p>
 <p><a href = '/mylanguage-namespaced/test/biblebrain/passage/usx'>Bible Text USX</a></p>
 
 <h2>Bible Gateway</h2>

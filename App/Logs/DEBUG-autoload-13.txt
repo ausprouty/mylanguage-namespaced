@@ -1,1 +1,1 @@
-string(60) "c:/ampp/htdocs/mylanguage-namespaced/App/Model/Bible/PDO.php"
+string(87) "c:/ampp/htdocs/mylanguage-namespaced/App/Model/BiblePassage/Bible/BiblePassageModel.php"

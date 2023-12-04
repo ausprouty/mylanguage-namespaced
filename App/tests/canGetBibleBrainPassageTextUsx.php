@@ -9,7 +9,7 @@ Look for the URL ion the BibleBrainJson Controller <hr>");
 $bible = new BibleModel();
 $bible->selectBibleByBid(6282);
 $bibleReferenceInfo = new BibleReferenceInfoModel();
-$bibleReferenceInfo->setFromPassage('Luke 1:1-6');
+$bibleReferenceInfo->setFromEntry('Luke 1:1-6');
 $passage = new BibleBrainTextJsonController($bibleReferenceInfo, $bible);
 $passage->getExternal();
 echo ($passage->getPassageText());
