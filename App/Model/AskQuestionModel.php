@@ -2,6 +2,7 @@
 namespace App\Model;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 
 class AskQuestionModel{
     private $dbConnection;

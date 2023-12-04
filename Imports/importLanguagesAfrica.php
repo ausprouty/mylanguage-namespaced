@@ -1,5 +1,6 @@
 <?php
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 
 $file = ROOT_IMPORT_DATA . 'AfricanLanguages.txt';
 $text = file_get_contents($file);

@@ -4,6 +4,7 @@ namespace App\Controller\Language;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Language\DbsLanguageModel as DbsLanguageModel;
 use App\Model\Language\LanguageModel as LanguageModel;
+use PDO as PDO;
 
 
 class DbsLanguageController{

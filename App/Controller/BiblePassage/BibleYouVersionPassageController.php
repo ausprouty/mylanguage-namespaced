@@ -7,6 +7,7 @@ namespace App\Controller\BiblePassage;
 use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Data\WebsiteConnectionModel as WebsiteConnectionModel;
+use PDO as PDO;
 
 class BibleYouVersionPassageController extends BiblePassageModel {
 

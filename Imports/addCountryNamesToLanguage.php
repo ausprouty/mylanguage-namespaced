@@ -8,6 +8,7 @@ This will see if we haved all countries
 */
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 
 $filename = ROOT_IMPORT_DATA . 'LanguageCountry.json';
 

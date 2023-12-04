@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 
 $isoCodes = getIso();
 foreach ($isoCodes as $isoCode){

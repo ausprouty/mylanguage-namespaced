@@ -2,6 +2,7 @@
 namespace App\Model\Bible;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 
 class BibleModel {
     private  $dbConnection;

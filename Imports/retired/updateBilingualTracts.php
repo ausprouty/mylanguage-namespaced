@@ -1,5 +1,6 @@
 <?php
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 
 echo ('I m inporting tracts');
 $dbConnection = new DatabaseConnectionModel();

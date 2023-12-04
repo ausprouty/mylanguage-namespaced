@@ -1,6 +1,7 @@
 <?php
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
+use PDO as PDO;
 
 class  DBSReferenceDatabaseImport{
   private  $dbConnection;

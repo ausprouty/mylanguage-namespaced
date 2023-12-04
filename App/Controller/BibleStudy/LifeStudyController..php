@@ -3,6 +3,7 @@ namespace App\Controller\BibleStudy;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Language\TranslationModel as TranslationModel;
+use PDO as PDO;
 
 class LifeStudyController{
     private $data;

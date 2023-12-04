@@ -4,9 +4,11 @@ namespace App\Controller\BiblePassage\BibleBrain;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Data\BibleBrainConnectionModel as BibleBrainConnectionModel;
+use App\Model\Bible\BibleModel as BibleModel;
+use PDO as PDO;
 /*  see https://documenter.getpostman.com/view/12519377/Tz5p6dp7
 */
-class BibleBrainBibleController extends Bible {
+class BibleBrainBibleController extends BibleModel {
     private $dbConnection;
     public $languageCodeIso;
     public $response;

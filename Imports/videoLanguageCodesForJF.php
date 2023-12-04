@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 
 $dbConnection = new DatabaseConnectionModel();
 

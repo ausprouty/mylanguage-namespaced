@@ -1,6 +1,7 @@
 <?PHP
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 
 echo ('I m verifying bi-lingual tracts');
 verify_database();

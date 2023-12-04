@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 // get rid of /https://api.arclight.org/videoPlayerUrl?refId=
 
 $dbConnection = new DatabaseConnectionModel();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 /*
 working with Data supplied by VAnce Nordman
 Save in /imports/data as json

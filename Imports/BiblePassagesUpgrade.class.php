@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use PDO as PDO;
 // upgrade BiblePassages to separate reference and link
 
 class BiblePassagesUpgrade extends BiblePassageModel
