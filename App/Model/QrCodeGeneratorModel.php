@@ -5,7 +5,7 @@ require_once ROOT_VENDOR . 'autoload.php';
 
 use Endroid\QrCode\QrCode;
 
-class QrCodeGenerator
+class QrCodeGeneratorModel
 {
     private $url;
     private $size;

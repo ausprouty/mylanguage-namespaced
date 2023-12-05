@@ -113,7 +113,7 @@ if (WEB_ROOT == '/mylanguage-namespaced/'){
     // TESTS
     get(WEB_ROOT . 'tests/createQrCode',  'App/Tests/createQrCode.php');
     get(WEB_ROOT . 'test',  'App/Tests/test.php');
-    get(WEB_ROOT . 'test/bengali',  'App/Tests/bengaliTest.php');
+
     //  Web Access
     get(WEB_ROOT . 'webpage',  'App/Tests/webpage.php');
 

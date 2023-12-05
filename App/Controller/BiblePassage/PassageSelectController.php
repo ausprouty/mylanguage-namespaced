@@ -7,7 +7,9 @@ use App\Controller\BiblePassage\BibleYouVersionPassageController as BibleYouVers
 use App\Controller\BiblePassage\BibleWordPassageController as BibleWordPassageController;
 use App\Controller\BiblePassage\BibleBrain\BibleBrainTextPlainController as BibleBrainTextPlainController;
 use App\Controller\BiblePassage\BibleGateway\BibleGatewayPassageController as  BibleGatewayPassageController;
-use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
+use App\Model\Bible\BibleModel as BibleModel;
+use App\Model\Bible\BiblePassageModel as BiblePassageModel;
+use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Language\LanguageModel as LanguageModel;
 
@@ -22,7 +24,7 @@ class PassageSelectController extends BiblePassageModel
     public  $passageUrl;
     public  $referenceLocalLanguage;
 
-    public function __construct( BibleReferenceInfo $bibleReferenceInfo, Bible $bible){
+    public function __construct( BibleReferenceInfoModel $bibleReferenceInfo, BibleModel $bible){
         //$this->dbConnection = new DatabaseConnectionModel();
             $this->bibleReferenceInfo=$bibleReferenceInfo;
             $this->bible = $bible;

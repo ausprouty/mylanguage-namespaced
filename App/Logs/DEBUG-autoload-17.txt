@@ -1,1 +1,1 @@
-string(18) "BibleReferenceInfo"
+string(34) "App/Controller/BibleStudy/stdClass"

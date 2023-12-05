@@ -4,8 +4,6 @@ writeLogDebug('indexLocal', 'We are in IndexLocal');
 echo "
 <p><a href= '/mylanguage-namespaced/tests/createQrCode'>CreateQRCode</a></p>
 
-<p><a href = '/mylanguage-namespaced/test/bengali'>Bengali Test</a></p>
-
 <p><a href = '/mylanguage-namespaced/api/life/view/2/eng00/frn00'>Principles 2 French-English</a></p>
 
 <h2>DBS</h2>

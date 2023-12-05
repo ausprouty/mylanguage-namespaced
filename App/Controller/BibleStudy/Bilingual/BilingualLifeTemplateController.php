@@ -5,13 +5,14 @@ namespace App\Controller\BibleStudy\Bilingual;
 use App\Controller\BibleStudy\Bilingual\BilingualStudyTemplateController as BilingualStudyTemplateController;
 use App\Controller\BibleStudy\LifeStudyController as LifeStudyController;
 use App\Model\Language\LanguageModel as LanguageModel;
+use App\Model\QrCodeGeneratorModel as QrCodeGeneratorModel;
 
 class BilingualLifeTemplateController extends BilingualStudyTemplateController
 {
     protected function createQrCode($url, $languageCodeHL){
         $size = 240;
         $fileName = 'Life'. $this->lesson .'-' .$languageCodeHL . '.png';
-        $qrCodeGenerator = new QrCodeGenerator($url, $size, $fileName);
+        $qrCodeGenerator = new QrCodeGeneratorModel($url, $size, $fileName);
         $qrCodeGenerator->generateQrCode();
         return $qrCodeGenerator->getQrCodeUrl();
     }

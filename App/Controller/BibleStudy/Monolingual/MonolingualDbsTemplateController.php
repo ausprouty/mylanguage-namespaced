@@ -4,13 +4,15 @@ namespace App\Controller\BibleStudy\Monolingual;
 use App\Controller\BibleStudy\DbsStudyController as  DbsStudyController;
 use App\Controller\BibleStudy\Monolingual\MonolingualStudyTemplateController as MonolingualStudyTemplateController;
 use App\Model\Language\LanguageModel as LanguageModel;
+use App\Model\BibleStudy\DbsReferenceModel as DbsReferenceModel;
+use App\Model\QrCodeGeneratorModel as QrCodeGeneratorModel;
 
 class MonolingualDbsTemplateController extends MonolingualStudyTemplateController
 {
     protected function createQrCode($url, $languageCodeHL){
         $size = 240;
         $fileName = 'DBS'. $this->lesson .'-' .$languageCodeHL . '.png';
-        $qrCodeGenerator = new QrCodeGenerator($url, $size, $fileName);
+        $qrCodeGenerator = new QrCodeGeneratorModel($url, $size, $fileName);
         $qrCodeGenerator->generateQrCode();
         return $qrCodeGenerator->getQrCodeUrl();
     }
@@ -45,7 +47,7 @@ class MonolingualDbsTemplateController extends MonolingualStudyTemplateControlle
         return ROOT_RESOURCES .'view/dbs/';
     }
     protected function getStudyReferenceInfo($lesson){
-        $studyReferenceInfo = new DbsReference();
+        $studyReferenceInfo = new DbsReferenceModel();
         $studyReferenceInfo->setLesson($lesson);
         return $studyReferenceInfo;  
     }

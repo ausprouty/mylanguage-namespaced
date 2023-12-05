@@ -1,1 +1,1 @@
-string(59) "c:/ampp/htdocs/mylanguage-namespaced/BibleReferenceInfo.php"
+string(75) "c:/ampp/htdocs/mylanguage-namespaced/App/Controller/BibleStudy/stdClass.php"

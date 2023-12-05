@@ -2,6 +2,7 @@
 namespace App\Model\Bible;
 
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
+use  App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
 use PDO as PDO;
 
 class BiblePassageModel
@@ -34,7 +35,7 @@ class BiblePassageModel
     public function getReferenceLocalLanguage(){
         return $this->referenceLocalLanguage;
     }
-    public static function createBiblePassageId(string $bid, BibleReferenceInfo $passage){
+    public static function createBiblePassageId(string $bid, BibleReferenceInfoModel $passage){
         // 1026-Luke-10-1-42
             $bpid=$bid .'-' .
             $passage->getBookID() . '-' .
