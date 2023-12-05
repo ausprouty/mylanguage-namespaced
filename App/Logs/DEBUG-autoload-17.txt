@@ -1,1 +1,1 @@
-string(46) "App/Model/BiblePassage/Bible/BiblePassageModel"
+string(24) "App/Model/Data/Exception"

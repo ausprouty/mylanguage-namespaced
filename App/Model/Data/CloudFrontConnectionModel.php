@@ -3,6 +3,8 @@
 */
 namespace App\Model\Data;
 
+use Exception as Exception;
+
 class CloudFrontConnectionModel
 {
     protected $url;

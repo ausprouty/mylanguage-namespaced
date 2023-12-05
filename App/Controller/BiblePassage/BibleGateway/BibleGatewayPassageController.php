@@ -4,7 +4,7 @@ namespace App\Controller\BiblePassage\BibleGateway;
 
 use App\Model\Bible\BibleModel as BibleModel;
 use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
-use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
+use App\Model\Bible\BiblePassageModel as BiblePassageModel;
 use App\Model\Data\WebsiteConnectionModel as WebsiteConnectionModel;
 
 
@@ -48,7 +48,7 @@ class BibleGatewayPassageController extends BiblePassageModel {
         }
     }
     private function formatExternal($webpage){
-        require_once('./libraries/simplehtmldom_1_9_1/simple_html_dom.php');
+        require_once(ROOT_LIBRARIES . '/simplehtmldom_1_9_1/simple_html_dom.php');
         $html = str_get_html($webpage);
         $e = $html->find('.dropdown-display-text', 0);
         if (!$e){

@@ -3,7 +3,7 @@
 */
 namespace App\Model\Data;
 
-
+use Exception as Exception;
 
 class WebsiteConnectionModel
 

@@ -63,7 +63,7 @@ echo "
 <p><a href = '/mylanguage-namespaced/test/biblebrain/passage/usx'>Bible Text USX</a></p>
 
 <h2>Bible Gateway</h2>
-<p> <a href= '/mylanguage-namespaced/test/biblegateway'>Get Passage</a></p>
+<p> <a href= '/mylanguage-namespaced/test/biblegateway'>Get Passage -OK</a></p>
 <h2>Word(local)</h2>
 <p> <a href= '/mylanguage-namespaced/test/word/passage/af'>Get af Passage from external id</a></p>
 

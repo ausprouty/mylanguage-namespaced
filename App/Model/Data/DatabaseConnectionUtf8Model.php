@@ -2,6 +2,7 @@
 namespace App\Model\Data;
 
 use PDO as PDO;
+use Exception as Exception;
 
 class DatabaseConnectionUtf8Model{
     private $dbConnection;

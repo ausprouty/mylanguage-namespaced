@@ -4,7 +4,9 @@
 */
 namespace App\Controller\BiblePassage;
 
-use App\Model\BiblePassage\Bible\BiblePassageModel as BiblePassageModel;
+use App\Model\Bible\BibleModel as BibleModel;
+use App\Model\Bible\BiblePassageModel as BiblePassageModel;
+use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Data\WebsiteConnectionModel as WebsiteConnectionModel;
 use PDO as PDO;
@@ -18,7 +20,7 @@ class BibleYouVersionPassageController extends BiblePassageModel {
     private $chapterAndVerse;
     private $retrieveBookName;
 
-    public function __construct( BibleReferenceInfo $bibleReferenceInfo, Bible $bible){
+    public function __construct( BibleReferenceInfoModel $bibleReferenceInfo, BibleModel $bible){
       
         $this->bibleReferenceInfo = $bibleReferenceInfo;
         $this->bible = $bible;
