@@ -12,22 +12,5 @@ $lesson = 3;
 
 
 $dbs = new BilingualDbsTemplateController($lang1, $lang2, $lesson);
-$dbsReference= new DbsReferenceModel();
-$dbsReference->setLesson($lesson);
-
-$bibleReferenceInfo=new BibleReferenceInfoModel();
-$bibleReferenceInfo->setFromEntry($dbsReference->getEntry());
-$testament = $bibleReferenceInfo->getTestament();
-
-$bible1 = new BibleModel();
-$bible1->setBestDbsBibleByLanguageCodeHL($lang1, $testament);
-$dbs->setBibleOne($bible1);
-
-$bible2 = new BibleModel();
-$bible2->setBestDbsBibleByLanguageCodeHL($lang2, $testament);
-$dbs->setBibleTwo($bible2);
-
-$dbs->setPassage($bibleReferenceInfo);
-$dbs->setBilingualTemplate();
 
 echo ($dbs->getTemplate());

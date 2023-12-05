@@ -22,11 +22,11 @@ $testament = $bibleReferenceInfo->getTestament();
 
 $bible1 = new BibleModel();
 $bible1->setBestDbsBibleByLanguageCodeHL($lang1, $testament);
-$dbs->setBibleOne($bible1);
+$dbs->findBibleOne($bible1);
 
 $bible2 = new BibleModel();
 $bible2->setBestDbsBibleByLanguageCodeHL($lang2, $testament);
-$dbs->setBibleTwo($bible2);
+$dbs->findBibleTwo($bible2);
 
 $dbs->setPassage($bibleReferenceInfo);
 $dbs->setBilingualTemplate();

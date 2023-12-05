@@ -6,6 +6,8 @@ where the gap after the  18 is a non-breaking space
 */
 namespace App\Controller\BibleStudy;
 
+use stdClass as stdClass;
+
 
 class BibleBlockController{
 
