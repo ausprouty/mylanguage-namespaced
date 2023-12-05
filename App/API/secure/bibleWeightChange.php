@@ -19,6 +19,6 @@ else{
   $weight = 0;
 }
 $bid =intval($_POST['bid']);
-$update = Bible::updateWeight($bid, $weight);
+$update = BibleModel::updateWeight($bid, $weight);
 ReturnDataController::returnData($update);
 die;

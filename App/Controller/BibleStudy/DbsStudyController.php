@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\BibleStudy;
 
+use App\Model\Bible\BibleModel as BibleModel;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Language\TranslationModel as TranslationModel;
 use PDO as PDO;
@@ -34,7 +35,7 @@ class DbsStudyController{
     }
     public function formatWithEthnicTitle($languageCodeHL){
         $formated = [];
-        $otAvailable = Bible::oldTestamentAvailable($languageCodeHL);
+        $otAvailable = BibleModel::oldTestamentAvailable($languageCodeHL);
         $translation = new TranslationModel($languageCodeHL, 'dbs');
         writeLogDebug('dbs-33', $this->data);
         foreach ($this->data as $lesson){

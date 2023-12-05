@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\Language;
 
+use App\Model\Bible\BibleModel as BibleModel;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Language\DbsLanguageModel as DbsLanguageModel;
 use App\Model\Language\LanguageModel as LanguageModel;
@@ -13,7 +14,7 @@ class DbsLanguageController{
         $directory = ROOT_TRANSLATIONS . 'languages/';
         $scanned_directory = array_diff(scandir($directory), array('..', '.'));
         foreach ($scanned_directory as $languageCodeHL){
-            $bible = Bible::getBestBibleByLanguageCodeHL($languageCodeHL);
+            $bible = BibleModel::getBestBibleByLanguageCodeHL($languageCodeHL);
             if (!$bible) {
                 continue;
             }

@@ -5,6 +5,8 @@
    Then send you the address of the file you can download
 */
 use  App\Controller\ReturnDataController as ReturnDataController;
+use App\Controller\BibleStudy\Bilingual\BilingualDbsTemplateController as BilingualDbsTemplateController;
+
 
 $fileName =  BilingualLeadershipTemplateController::findFileNamePdf($lesson, $languageCodeHL1, $languageCodeHL2);
 $path = BilingualLeadershipTemplateController::getPathPdf();

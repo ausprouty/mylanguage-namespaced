@@ -2,6 +2,7 @@
 namespace App\Controller\BibleStudy\Monolingual;
 
 use App\Model\Bible\BibleModel as BibleModel;
+use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
 use App\Model\Language\TranslationModel as TranslationModel;
 use App\Model\Language\LanguageModel as LanguageModel;
 
@@ -46,7 +47,7 @@ abstract class MonolingualStudyTemplateController
         $this->title = $this->findTitle($lesson, $languageCodeHL1);
         $this->setTranslation($this->getTranslationSource());
         $this->studyReferenceInfo = $this->getStudyReferenceInfo($lesson);
-        $this->bibleReferenceInfo = new  BibleReferenceInfo();
+        $this->bibleReferenceInfo =new BibleReferenceInfoModel();
         $this->bibleReferenceInfo->setFromEntry($this->studyReferenceInfo->getEntry());
         $this->testament = $this->bibleReferenceInfo->getTestament();
         $this->bible1 = $this->findBibleOne($languageCodeHL1, $this->testament);

@@ -5,6 +5,7 @@ use App\Controller\BibleStudy\Bilingual\BilingualStudyTemplateController as Bili
 use App\Controller\BibleStudy\DbsStudyController as  DbsStudyController;
 use App\Model\Language\LanguageModel as LanguageModel;
 
+
 class BilingualDbsTemplateController extends BilingualStudyTemplateController
 
 

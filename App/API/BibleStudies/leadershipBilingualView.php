@@ -6,6 +6,8 @@
    Then send you the text you need
 */
 use  App\Controller\ReturnDataController as ReturnDataController;
+use App\Controller\BibleStudy\Bilingual\BilingualDbsTemplateController as BilingualDbsTemplateController;
+use App\Controller\Language\DbsLanguageController as DbsLanguageController;
 
 
 $fileName = DbsLanguageController::bilingualDbsViewFilename( 

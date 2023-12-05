@@ -1,5 +1,6 @@
 <?php
 use App\Model\Bible\BibleModel as BibleModel;
+use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
 use App\Model\BibleStudy\DbsReferenceModel as DbsReferenceModel;
 
 
@@ -13,7 +14,7 @@ $dbs = new BilingualDbsTemplateController($lang1, $lang2, $lesson);
 $dbsReference= new DbsReferenceModel();
 $dbsReference->setLesson($lesson);
 
-$bibleReferenceInfo= new  BibleReferenceInfo();
+$bibleReferenceInfo=new BibleReferenceInfoModel();
 $bibleReferenceInfo->setFromEntry($dbsReference->getEntry());
 $testament = $bibleReferenceInfo->getTestament();
 

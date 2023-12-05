@@ -6,6 +6,8 @@
 */
 
 use  App\Controller\ReturnDataController as ReturnDataController;
+use App\Controller\BibleStudy\Bilingual\BilingualDbsTemplateController as BilingualDbsTemplateController;
+
 
 
 $fileName =  BilingualLifeTemplateController::findFileNamePdf($lesson, $languageCodeHL1, $languageCodeHL2);
