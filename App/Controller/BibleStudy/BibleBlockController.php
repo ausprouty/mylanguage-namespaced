@@ -25,12 +25,9 @@ class BibleBlockController{
         $this->textLanguage2 = $textLanguage2;
         $this->verseRange = $verseRange;
         $this->setTemplate();
-        writeLogDebug('BibleBlockController-25', $this->textLanguage1);
-        writeLogDebug('BibleBlockController-26', $this->textLanguage2);
         $this->paragraphs1 = $this->findParagraphs($this->textLanguage1);
         $this->paragraphs2 = $this->findParagraphs($this->textLanguage2);
         $message = count($this->paragraphs1) . '--' .  count($this->paragraphs2) . '('. $verseRange . ')';
-        writeLogDebug('BibleBlockController-29', $message);
         if (count($this->paragraphs1) != count($this->paragraphs2)){
             $this->readjustParagraphs();
         }
@@ -43,7 +40,10 @@ class BibleBlockController{
     private function fillBibleBlock(){
         $passageRows = '';
         foreach ($this->paragraphs1 as $key => $paragraphLanguage1){
-            $paragraphLanguage2 = $this->paragraphs2[$key];
+            $paragraphLanguage2Text = '';
+            if (isset($this->paragraphs2[$key])){
+                $paragraphLanguage2Text= $this->paragraphs2[$key]->text;
+            }
             $column1 = '<td class="{{dir_language1}} dbs" style="font-family:{{font_language1}}" dir ="{{dir_language1}}" >' ;
             $column2 = '<td class="||dir_language2|| dbs" style="font-family:||font_language2||"  dir ="||dir_language2||" >' ;
             if ($key == 1){
@@ -51,15 +51,13 @@ class BibleBlockController{
                 $column2 .=  '<span class="biblereference">||Bible Reference||</span>';
             }
             $column1 .=  $paragraphLanguage1->text . '</td>';
-            $column2 .=  $paragraphLanguage2->text . '</td>';
+            $column2 .=  $paragraphLanguage2Text . '</td>';
             $passageRows .= '<tr class="{{dir_language1}} dbs"  dir ="{{dir_language1}}" >' . "\n";
             $passageRows  .= "$column1\n";
             $passageRows  .= "$column2\n";
             $passageRows  .= "</tr>\n";
         }
-        writeLogDebug('bibleBlock-52',  $passageRows );
         $this->bibleBlock = str_replace('{{passage_rows}}', $passageRows, $this->template);
-        writeLogDebug('bibleBlock-54',  $this->bibleBlock );
     }
 
     private function setTemplate(){
@@ -81,7 +79,6 @@ class BibleBlockController{
                 $rows[$index] = $obj;
             }
         }
-        writeLogDebug('bibleBlock-73', $rows);
         return $rows;
     }
 
@@ -126,7 +123,6 @@ class BibleBlockController{
             $text = $newText;
         }
         $text = trim(substr($text, 4 ) ). '</p>';
-        writeLogDebug('bibleBlock-100', $text);
         return $text;
     }
 
@@ -145,7 +141,6 @@ class BibleBlockController{
                 $output[$verseNumber] = $verseText;
             }
         }
-        writeLogDebug('bibleBlock-105', $output);
         return $output;
     }
     private function removeParagraphsAndDivs($text){
@@ -156,7 +151,6 @@ class BibleBlockController{
         $text = preg_replace($pattern, $replacement, $text);
         //alsi remove non-breaking space
         $text = preg_replace('/\xC2\xA0/', ' ', $text);
-        writeLogDebug('bibleBlock-89', $text);
         return $text;
     }
 }

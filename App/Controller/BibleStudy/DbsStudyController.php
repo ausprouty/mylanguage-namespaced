@@ -5,6 +5,7 @@ use App\Model\Bible\BibleModel as BibleModel;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Language\TranslationModel as TranslationModel;
 use PDO as PDO;
+use StdClass as StdClass;
 
 class DbsStudyController{
     private $data;

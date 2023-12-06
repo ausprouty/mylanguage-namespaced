@@ -1,1 +1,1 @@
-string(34) "App/Controller/BibleStudy/stdClass"
+string(27) "App/Model/AskQuestionsModel"
