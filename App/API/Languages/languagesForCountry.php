@@ -1,6 +1,7 @@
 <?php
 
 use App\Controller\ReturnDataController as ReturnDataController;
+use  App\Model\Language\CountryLanguageModel as  CountryLanguageModel;
 
-$data = CountryLanguages::getLanguagesWithContentForCountry($countryCode);
+$data = CountryLanguageModel::getLanguagesWithContentForCountry($countryCode);
 ReturnDataController::returnData($data);

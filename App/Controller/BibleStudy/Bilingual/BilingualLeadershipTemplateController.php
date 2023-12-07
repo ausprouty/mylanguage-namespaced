@@ -5,6 +5,7 @@ use App\Controller\BibleStudy\Bilingual\BilingualStudyTemplateController as Bili
 use App\Controller\BibleStudy\LeadershipStudyController as LeadershipStudyController;
 use App\Model\Language\LanguageModel as LanguageModel;
 use App\Model\QrCodeGeneratorModel as QrCodeGeneratorModel;
+use App\Model\BibleStudy\LeadershipReferenceModel as LeadershipReferenceModel;
 
 class BilingualLeadershipTemplateController extends BilingualStudyTemplateController
 {
@@ -43,7 +44,7 @@ class BilingualLeadershipTemplateController extends BilingualStudyTemplateContro
         return ROOT_RESOURCES .'view/leadership/';
     }
     protected function getStudyReferenceInfo($lesson){
-        $studyReferenceInfo = new LeadershipReference();
+        $studyReferenceInfo = new LeadershipReferenceModel();
         $studyReferenceInfo->setLesson($lesson);
         return $studyReferenceInfo;  
     }

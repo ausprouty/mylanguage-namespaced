@@ -6,12 +6,12 @@
    Then send you the text you need
 */
 use  App\Controller\ReturnDataController as ReturnDataController;
-use App\Controller\BibleStudy\Bilingual\BilingualDbsTemplateController as BilingualDbsTemplateController;
+use App\Controller\BibleStudy\Bilingual\BilingualLeadershipTemplateController as BilingualLeadershipTemplateController;
 use App\Controller\Language\DbsLanguageController as DbsLanguageController;
 
 
 $fileName = DbsLanguageController::bilingualDbsViewFilename( 
-    $languageCodeHL1, $languageCodeHL2, $lesson , 'Leadership');
+$languageCodeHL1, $languageCodeHL2, $lesson , 'Leadership');
 $path = BilingualLeadershipTemplateController::getPathView();
 $filePath = $path . $fileName;
 //if (!file_exists($filePath)){

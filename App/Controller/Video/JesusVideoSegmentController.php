@@ -4,6 +4,7 @@ namespace App\Controller\Video;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Language\TranslationModel as TranslationModel;
 use PDO as PDO;
+use stdClass as stdClass;
 
 class JesusVideoSegmentController{
     private $data;

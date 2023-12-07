@@ -13,6 +13,8 @@ require_once __DIR__.'/App/Includes/writeLog.php';
 writeLogDebug('routes', 'We are in routes');
 writeLogDebug('WEB_ROOT', WEB_ROOT);
 
+get(WEB_ROOT . 'remote', 'App/views/indexRemote.php');
+
 //API
 
 get(WEB_ROOT . 'api/ask/$languageCodeHL', 'App/API/askQuestions.php');
@@ -24,67 +26,59 @@ get(WEB_ROOT . 'api/content/available/$languageCodeHL1/$languageCodeHL2', 'App/A
 get(WEB_ROOT . 'api/createQrCode', 'App/API/createQrCode.php');
 
 get(WEB_ROOT . 'api/dbs/languages', 'App/API/BibleStudies/dbsLanguageOptions.php');
+get(WEB_ROOT . 'api/dbs/pdf/$lesson/$languageCodeHL1', 'App/API/BibleStudies/dbsMonolingualPdf.php');
 get(WEB_ROOT . 'api/dbs/pdf/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/dbsBilingualPdf.php');
-// check from here
-
-get(WEB_ROOT . 'api/life_principles/studies', 'App/API/BibleStudies/lifeStudyOptions.php');
-get(WEB_ROOT . 'api/life_principles/studies/$languageCodeHL1', 'App/API/BibleStudies/lifeStudyOptions.php');
-
-get(WEB_ROOT . 'api/life_principles/view/$lesson/$languageCodeHL1', 'App/API/BibleStudies/lifeMonolingualView.php');
-get(WEB_ROOT . 'api/life_principles/view/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/lifeBilingualView.php');
-get(WEB_ROOT . 'api/life_principles/pdf/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/lifeBilingualPdf.php');
-
-
-
-
 get(WEB_ROOT . 'api/dbs/studies', 'App/API/BibleStudies/dbsStudyOptions.php');
 get(WEB_ROOT . 'api/dbs/studies/$languageCodeHL1', 'App/API/BibleStudies/dbsStudyOptions.php');
 get(WEB_ROOT . 'api/dbs/view/$lesson/$languageCodeHL1', 'App/API/BibleStudies/dbsMonolingualView.php');
 get(WEB_ROOT . 'api/dbs/view/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/dbsBilingualView.php');
-get(WEB_ROOT . 'api/dbs/$lesson/$languageCodeHL', 'App/API/BibleStudies/dbs.php');
 
-get(WEB_ROOT . 'api/leadership/studies', 'App/API/leadershipStudyOptions.php');
+get(WEB_ROOT . 'api/followingjesus/segments/$languageCodeHL', 'App/API/Videos/followingJesusOptions.php');
+
+get(WEB_ROOT . 'api/jvideo/questions/$languageCodeHL', 'App/API/Videos/jVideoQuestionsMonolingual.php');
+get(WEB_ROOT . 'api/jvideo/questions/$languageCodeHL1/$languageCodeHL2', 'App/API/Videos/jVideoQuestionsBilingual.php');
+get(WEB_ROOT . 'api/jvideo/segments/$languageCodeHL', 'App/API/Videos/jVideoSegments.php');
+
+get(WEB_ROOT . 'api/language/$languageCodeHL', 'App/API/Languages/languageDetails.php');
+get(WEB_ROOT . 'api/language/languageCodeJF/$languageCodeHL', 'App/API/Languages/languageCodeJF.php');
+get(WEB_ROOT . 'api/language/languageCodeJFFollowingJesus/$languageCodeHL', 'App/API/Languages/languageCodeJFFollowingJesus.php');
+get(WEB_ROOT . 'api/languages/hindi', 'App/API/Languages/hindiLanguageOptions.php');
+get(WEB_ROOT . 'api/languages/country/$countryCode', 'App/API/Languages/languagesForCountry.php');
+
+get(WEB_ROOT . 'api/leadership/pdf/$lesson/$languageCodeHL1', 'App/API/BibleStudies/leadershipMonolingualPdf.php');
+get(WEB_ROOT . 'api/leadership/pdf/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/leadershipBilingualPdf.php');
+get(WEB_ROOT . 'api/leadership/studies', 'App/API/BibleStudies/leadershipStudyOptions.php');
 get(WEB_ROOT . 'api/leadership/studies/$languageCodeHL1', 'App/API/BibleStudies/leadershipStudyOptions.php');
 get(WEB_ROOT . 'api/leadership/view/$lesson/$languageCodeHL1', 'App/API/BibleStudies/leadershipMonolingualView.php');
 get(WEB_ROOT . 'api/leadership/view/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/leadershipBilingualView.php');
-get(WEB_ROOT . 'api/leadership/pdf/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/leadershipBilingualPdf.php');
+
+get(WEB_ROOT . 'api/life_principles/pdf/$lesson/$languageCodeHL1', 'App/API/BibleStudies/lifeMonolingualPdf.php');
+get(WEB_ROOT . 'api/life_principles/pdf/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/lifeBilingualPdf.php');
+get(WEB_ROOT . 'api/life_principles/studies', 'App/API/BibleStudies/lifeStudyOptions.php');
+get(WEB_ROOT . 'api/life_principles/studies/$languageCodeHL1', 'App/API/BibleStudies/lifeStudyOptions.php');
+get(WEB_ROOT . 'api/life_principles/view/$lesson/$languageCodeHL1', 'App/API/BibleStudies/lifeMonolingualView.php');
+get(WEB_ROOT . 'api/life_principles/view/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/lifeBilingualView.php');
+
+// cjecl from here
 
 
-get(WEB_ROOT . 'api/followingjesus/segments/$languageCodeHL', 'App/API/followingJesusOptions.php');
+get(WEB_ROOT . 'api/followingjesus/videocode/$languageCodeHL' , 'App/API/videoCodeForFollowingJesus.php');
 
-get(WEB_ROOT . 'api/gospel/languages', 'App/API/gospelLanguageOptions.php');
+get(WEB_ROOT . 'api/gospel/languages', 'App/API/Gospel/gospelLanguageOptions.php');
 get(WEB_ROOT . 'api/gospel/view/$page', 'App/API/gospelPage.php');
-
-get(WEB_ROOT . 'api/hindi/languages', 'App/API/hindiLanguageOptions.php');
-
-get(WEB_ROOT . 'api/jvideo/questions/$languageCodeHL', 'App/API/jVideoQuestionsMonolingual.php');
-get(WEB_ROOT . 'api/jvideo/questions/$languageCodeHL1/$languageCodeHL2', 'App/API/jVideoQuestionsBilingual.php');
-get(WEB_ROOT . 'api/jvideo/segments/$languageCodeHL', 'App/API/jVideoSegments.php');
-
-get(WEB_ROOT . 'api/language/$languageCodeHL', 'App/API/languageDetails.php');
-get(WEB_ROOT . 'api/language/languageCodeJF/$languageCodeHL', 'App/API/languageCodeJF.php');
-get(WEB_ROOT . 'api/language/languageCodeJFFollowingJesus/$languageCodeHL', 'App/API/languageCodeJFFollowingJesus.php');
-get(WEB_ROOT . 'api/languages/country/$countryCode', 'App/API/languagesForCountry.php');
-
-
 
 
 get(WEB_ROOT . 'api/video/code/$title/$languageCodeHL', 'App/API/videoCodeFromTitle.php');
-get(WEB_ROOT . 'api/videocode/followingjesus/$languageCodeHL' , 'App/API/videoCodeForFollowingJesus.php');
+
 
 post(WEB_ROOT .'api/passage/text', 'App/API/passageForBible.php');
-
-post(WEB_ROOT . 'api/secure/bibles/weight/change', 'App/API/secure/bibleWeightChange.php');
-
-// Index
-
-get(WEB_ROOT . 'remote', 'App/views/indexRemote.php');
 
 
 if (WEB_ROOT == '/mylanguage-namespaced/'){
   //  get(WEB_ROOT , 'App/Views/index.php');
     get(WEB_ROOT , 'App/Views/indexLocal.php');
     get(WEB_ROOT . 'local', '/App/Views/indexLocal.php');
+    post(WEB_ROOT . 'api/secure/bibles/weight/change', 'App/API/secure/bibleWeightChange.php');
     // Imports
 
     get(WEB_ROOT . 'import/bible/externalId', 'imports/updateBibleExternalId.php');

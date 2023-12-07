@@ -1,5 +1,6 @@
 <?php
 use App\Controller\ReturnDataController as ReturnDataController;
+use App\Model\Video\VideoModel as VideoModel;
 
-$result = Video::getLanguageCodeJFFollowingJesus($languageCodeHL);
+$result = VideoModel::getLanguageCodeJFFollowingJesus($languageCodeHL);
 ReturnDataController::returnData($result);

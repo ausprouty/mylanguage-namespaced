@@ -1,1 +1,1 @@
-string(31) "BilingualLifeTemplateController"
+string(16) "CountryLanguages"

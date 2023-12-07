@@ -25,5 +25,4 @@ $options = [
         'title' => '5. Sharing Your Faith With Others'
     ]
 ];
-writeLogDebug('followingHim-25', $options)
 ReturnDataController::returnData($options);
