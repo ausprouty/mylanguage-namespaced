@@ -1,1 +1,1 @@
-string(13) "PdfController"
+string(31) "BilingualLifeTemplateController"

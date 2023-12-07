@@ -19,18 +19,17 @@ get(WEB_ROOT . 'api/ask/$languageCodeHL', 'App/API/askQuestions.php');
 get(WEB_ROOT . 'api/bibles/$languageCodeHL', 'App/API/Bibles/biblesForLanguage.php');
 get(WEB_ROOT . 'api/bibles/dbs/next/$languageCodeHL','App/API/Bibles/bibleForDbsNext.php');
 
-
 get(WEB_ROOT . 'api/content/available/$languageCodeHL1/$languageCodeHL2', 'App/API/contentAvailable.php');
-// check from here
-get(WEB_ROOT . 'api/createQrCode', 'App/API/createQrCode.php');
 
+get(WEB_ROOT . 'api/createQrCode', 'App/API/createQrCode.php');
 
 get(WEB_ROOT . 'api/dbs/languages', 'App/API/BibleStudies/dbsLanguageOptions.php');
 get(WEB_ROOT . 'api/dbs/pdf/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/dbsBilingualPdf.php');
-
+// check from here
 
 get(WEB_ROOT . 'api/life_principles/studies', 'App/API/BibleStudies/lifeStudyOptions.php');
 get(WEB_ROOT . 'api/life_principles/studies/$languageCodeHL1', 'App/API/BibleStudies/lifeStudyOptions.php');
+
 get(WEB_ROOT . 'api/life_principles/view/$lesson/$languageCodeHL1', 'App/API/BibleStudies/lifeMonolingualView.php');
 get(WEB_ROOT . 'api/life_principles/view/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/lifeBilingualView.php');
 get(WEB_ROOT . 'api/life_principles/pdf/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/lifeBilingualPdf.php');

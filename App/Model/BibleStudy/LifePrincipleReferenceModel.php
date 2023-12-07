@@ -4,7 +4,7 @@ namespace App\Model\BibleStudy;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use PDO as PDO;
 //todo  I think this needs a rewrite
-class LifePrincipleReference {
+class LifePrincipleReferenceModel {
     private $dbConnection;
     private $lesson;
     private $description;

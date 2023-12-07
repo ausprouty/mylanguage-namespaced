@@ -5,6 +5,7 @@
    Then send you the text you need
 */
 use  App\Controller\ReturnDataController as ReturnDataController;
+use  App\Controller\BibleStudy\Monolingual\MonolingualLifeTemplateController as MonolingualLifeTemplateController;
 
 $fileName = MonolingualLifeTemplateController::findFileNameView($lesson, $languageCodeHL1);
 $path = MonolingualLifeTemplateController::getPathView();

@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\BibleStudy\Monolingual;
 
+use App\Controller\BiblePassage\PassageSelectController as PassageSelectController;
 use App\Model\Bible\BibleModel as BibleModel;
 use App\Model\Bible\BibleReferenceInfoModel as BibleReferenceInfoModel;
 use App\Model\Language\TranslationModel as TranslationModel;
@@ -75,7 +76,7 @@ abstract class MonolingualStudyTemplateController
         return $bible;
     }
    
-    public function setPassage(BibleReferenceInfo $bibleReferenceInfo)
+    public function setPassage(BibleReferenceInfoModel $bibleReferenceInfo)
     {
         $this->bibleReferenceInfo = $bibleReferenceInfo;
         $this->biblePassage1= new PassageSelectController ($this->bibleReferenceInfo, $this->bible1);

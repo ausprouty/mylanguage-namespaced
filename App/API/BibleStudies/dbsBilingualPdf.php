@@ -6,7 +6,9 @@
 */
 
 use  App\Controller\ReturnDataController as ReturnDataController;
+use App\Controller\PdfController as PdfController;
 use App\Controller\BibleStudy\Bilingual\BilingualDbsTemplateController as BilingualDbsTemplateController;
+
 
 
 $fileName =  BilingualDbsTemplateController::findFileNamePdf($lesson, $languageCodeHL1, $languageCodeHL2);
@@ -17,7 +19,7 @@ $filePath = $path . $fileName;
     $study= new BilingualDbsTemplateController($languageCodeHL1, $languageCodeHL2, $lesson);
     $html =  $study->getTemplate();
     $styleSheet = 'dbs.css';
-    $mpdf = new PdfController($languageCodeHL1, $languageCodeHL);
+    $mpdf = new PdfController($languageCodeHL1, $languageCodeHL2);
     $mpdf->writePdfToComputer($html, $styleSheet, $filePath);
 //}
 $url = BilingualDbsTemplateController::getUrlPdf();

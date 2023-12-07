@@ -6,6 +6,7 @@ use App\Controller\BibleStudy\Bilingual\BilingualStudyTemplateController as Bili
 use App\Controller\BibleStudy\LifeStudyController as LifeStudyController;
 use App\Model\Language\LanguageModel as LanguageModel;
 use App\Model\QrCodeGeneratorModel as QrCodeGeneratorModel;
+use App\Model\BibleStudy\LifePrincipleReferenceModel AS LifePrincipleReferenceModel;
 
 class BilingualLifeTemplateController extends BilingualStudyTemplateController
 {
@@ -44,7 +45,7 @@ class BilingualLifeTemplateController extends BilingualStudyTemplateController
         return ROOT_RESOURCES .'view/principle/';
     }
     protected function getStudyReferenceInfo($lesson){
-        $studyReferenceInfo = new LifePrincipleReference();
+        $studyReferenceInfo = new LifePrincipleReferenceModel();
         $studyReferenceInfo->setLesson($lesson);
         return $studyReferenceInfo;  
     }
