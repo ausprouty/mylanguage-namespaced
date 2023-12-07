@@ -14,18 +14,19 @@ writeLogDebug('routes', 'We are in routes');
 writeLogDebug('WEB_ROOT', WEB_ROOT);
 
 //API
-// check from her
+
 get(WEB_ROOT . 'api/ask/$languageCodeHL', 'App/API/askQuestions.php');
-get(WEB_ROOT . 'api/bibles/$languageCodeHL', 'App/API/biblesForLanguage.php');
-get(WEB_ROOT . 'api/bibles/dbs/next/$languageCodeHL','api/bibleForDbsNext.php');
-get(WEB_ROOT . 'api/bibles/text/$languageCodeHL', 'App/API/biblesForLanguageTextOnly.php');
+get(WEB_ROOT . 'api/bibles/$languageCodeHL', 'App/API/Bibles/biblesForLanguage.php');
+get(WEB_ROOT . 'api/bibles/dbs/next/$languageCodeHL','App/API/Bibles/bibleForDbsNext.php');
+
 
 get(WEB_ROOT . 'api/content/available/$languageCodeHL1/$languageCodeHL2', 'App/API/contentAvailable.php');
+// check from here
 get(WEB_ROOT . 'api/createQrCode', 'App/API/createQrCode.php');
 
 
 get(WEB_ROOT . 'api/dbs/languages', 'App/API/BibleStudies/dbsLanguageOptions.php');
-get(WEB_ROOT . 'api/dbs/pdf/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/dbsBilingualPdf.php');
+get(WEB_ROOT . 'api/dbs/pdf/$lesson/$languageCodeHL1/$languageCodeHL2', 'App/API/BibleStudies/dbsBilingualPdf.php');
 
 
 get(WEB_ROOT . 'api/life_principles/studies', 'App/API/BibleStudies/lifeStudyOptions.php');

@@ -1,8 +1,8 @@
 <?php
 
 use  App\Controller\ReturnDataController as ReturnDataController;
-use App\Model\AskQuestionsModel as AskQuestionsModel;
+use App\Model\AskQuestionModel as AskQuestionModel;
 
-$data = AskQuestionsModel::gettBestSiteByLanguageCodeHL($languageCodeHL);
+$data = AskQuestionModel::getBestSiteByLanguageCodeHL($languageCodeHL);
 ReturnDataController::returnData($data);
 die;

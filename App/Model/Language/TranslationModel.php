@@ -24,20 +24,20 @@ class TranslationModel
         default:
             return;
     }
-    $file =  ROOT_TRANSLATIONS  . $languageCodeHL .'/'. $filename;
+    $file =  ROOT_TRANSLATIONS .'languages/' . $languageCodeHL .'/'. $filename;
     if (file_exists($file)){
         $text = file_get_contents($file);
         $translation = json_decode($text, true);
     }
     else{
-        $file = ROOT_TRANSLATIONS . '/eng00/'. $filename;
+        $file = ROOT_TRANSLATIONS . 'languages/eng00/'. $filename;
         if (file_exists($file)){
             $text = file_get_contents($file);
             $translation = json_decode($text, true);
         }
         else{
             $translation = [];
-            $message = ROOT_TRANSLATIONS . '/eng00/'. $filename . " not found";
+            $message = ROOT_TRANSLATIONS . 'languages/eng00/'. $filename . " not found";
             trigger_error( $message, E_USER_ERROR);
            
         }

@@ -48,7 +48,7 @@ class AskQuestionModel{
             return null;
         }
     }
-    static function gettBestSiteByLanguageCodeHL($code){
+    static function getBestSiteByLanguageCodeHL($code){
         $dbConnection = new DatabaseConnectionModel();
         $query = "SELECT * FROM ask_questions 
             WHERE languageCodeHL = :code 
