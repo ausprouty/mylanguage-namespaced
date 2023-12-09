@@ -4,11 +4,5 @@ use App\Controller\Video\JesusVideoSegmentController as JesusVideoSegmentControl
 
 
 $segments = new JesusVideoSegmentController($languageCodeJF);
-$segments->selectAllSegments();
-if ($languageCodeHL =='eng00'){
-    $data = $segments->formatWithEnglishTitle();
-}
-else{
-    $data = $segments->formatWithEthnicTitle($languageCodeHL);
-}
+
 ReturnDataController::returnData($data);

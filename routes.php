@@ -37,7 +37,8 @@ get(WEB_ROOT . 'api/followingjesus/segments/$languageCodeHL', 'App/API/Videos/fo
 
 get(WEB_ROOT . 'api/jvideo/questions/$languageCodeHL', 'App/API/Videos/jVideoQuestionsMonolingual.php');
 get(WEB_ROOT . 'api/jvideo/questions/$languageCodeHL1/$languageCodeHL2', 'App/API/Videos/jVideoQuestionsBilingual.php');
-get(WEB_ROOT . 'api/jvideo/segments/$languageCodeHL', 'App/API/Videos/jVideoSegments.php');
+get(WEB_ROOT . 'api/jvideo/segments/$languageCodeHL/$languageCodeJF', 'App/API/Videos/jVideoSegments.php');
+get(WEB_ROOT . 'api/jvideo/source/$segment/$languageCodeJF', 'App/API/Videos/jVideoSource.php');
 
 get(WEB_ROOT . 'api/language/$languageCodeHL', 'App/API/Languages/languageDetails.php');
 get(WEB_ROOT . 'api/language/languageCodeJF/$languageCodeHL', 'App/API/Languages/languageCodeJF.php');
