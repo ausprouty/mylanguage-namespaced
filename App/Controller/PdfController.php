@@ -19,9 +19,9 @@ class PdfController {
         $fontDirs = $defaultConfig['fontDir'];
         $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
-        writeLogDebug('pdf-fonts-20',  $fontData);
+
         $fontDataForLanguages = $this->getFontData($languageCodeHL1, $languageCodeHL2);
-        writeLogDebug('pdf-fonts-22',  $fontDataForLanguages);
+
         // Set the default configuration
         $fontDataToUse = array_merge ($fontData, $fontDataForLanguages);
      
@@ -70,7 +70,6 @@ class PdfController {
         if (strpos ($filename, '.pdf') == FALSE){
             $filename .= '.pdf';
         }
-        writeLogDebug('pdf-72', $html);
         $stylesheet = file_get_contents(ROOT_STYLES . $stylesheet);
         $this->mpdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
         $this->mpdf->WriteHTML($html,\Mpdf\HTMLParserMode::HTML_BODY);

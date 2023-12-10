@@ -8,8 +8,6 @@ class ReturnDataController {
        header("Access-Control-Allow-Methods: POST, GET");
        header("Content-type: application/json");
        echo json_encode($data);
-       writeLogDebug('return Data',  json_encode($data));
-
     }
     static function returnNotAuthorized(){
         $data = 'not Authorized';

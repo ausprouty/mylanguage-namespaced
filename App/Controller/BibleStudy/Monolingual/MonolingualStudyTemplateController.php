@@ -97,7 +97,6 @@ abstract class MonolingualStudyTemplateController
         }
         $this->template = file_get_contents($file);
         $this->createBibleBlock();
-        writeLogDebug('bibleBlock-117', $this->bibleBlock);
         $this->fillPlaceHolderSpanLanguage1('{{Bible Block}}', $this->bibleBlock);
         $this->fillPlaceHolderSpanLanguage1('{{language}}', $this->language1->getName());
         $this->fillPlaceHolder('{{Bible Reference}}', $this->biblePassage1->getReferenceLocalLanguage());

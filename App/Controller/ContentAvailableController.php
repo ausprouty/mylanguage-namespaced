@@ -40,7 +40,6 @@ class ContentAvailableController{
         return $options;
     }
     public function getDbsAvailable(){
-        writeLogDebug('dbs', $this->languageCodeHL1 );
         $this->query = "SELECT languageCodeHL
             FROM dbs_languages
             WHERE languageCodeHL = :languageCodeHL1

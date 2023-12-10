@@ -5,7 +5,7 @@ namespace App\Controller\Language;
 use App\Model\Data\DatabaseConnectionModel as DatabaseConnectionModel;
 use App\Model\Video\VideoModel as VideoModel;
 use PDO as PDO;
-use StdClass as StClass;
+use stdClass as stdClass;
 
 
 class HindiLanguageController{
@@ -31,10 +31,10 @@ class HindiLanguageController{
             return null;
         }
     }
-    private function getLanguageCodeJF($result){
+    private function addLanguageCodeJF($result){
         $data = [];
         foreach ($result as $language){
-            $obj = new StdClass;
+            $obj = new stdClass;
             $obj = $language;
             $obj['languageCodeJF'] = VideoModel::getLanguageCodeJF($language['languageCodeHL']);
             $data[] = $obj;

@@ -15,10 +15,8 @@ $fileName =  BilingualLifeTemplateController::findFileNamePdf($lesson, $language
 $path = BilingualLifeTemplateController::getPathPdf();
 $filePath = $path . $fileName;
 //if (!file_exists($filePath)){
-    writeLogDebug('life-11', $filePath);
     $study = new BilingualLifeTemplateController($languageCodeHL1, $languageCodeHL2, $lesson);
     $html =  $study->getTemplate();
-    writeLogDebug('life-14', $html);
     $styleSheet = 'dbs.css';
     $mpdf = new PdfController($languageCodeHL1, $languageCodeHL2);
     $mpdf->writePdfToComputer($html, $styleSheet, $filePath);
@@ -26,5 +24,4 @@ $filePath = $path . $fileName;
 $url = BilingualLifeTemplateController::getUrlPdf();
 $response['url'] = $url . $fileName;
 $response['name'] = $fileName;
-writeLogDebug('life-19', $response);
 ReturnDataController::returnData($response);

@@ -38,7 +38,6 @@ class DbsStudyController{
         $formated = [];
         $otAvailable = BibleModel::oldTestamentAvailable($languageCodeHL);
         $translation = new TranslationModel($languageCodeHL, 'dbs');
-        writeLogDebug('dbs-33', $this->data);
         foreach ($this->data as $lesson){
             if ($lesson['testament'] == 'NT' || ($lesson['testament'] == 'OT' && $otAvailable)){
                 $translated = $translation->translateText ($lesson['description']);
@@ -53,7 +52,6 @@ class DbsStudyController{
         return $formatted;
     }
     static function getTitle($lesson, $languageCodeHL){
-        writeLogDebug('title-48', $languageCodeHL);
         $dbConnection = new DatabaseConnectionModel();
         if ($languageCodeHL != 'eng00'){
             $translation = new TranslationModel($languageCodeHL, 'dbs');
@@ -64,7 +62,6 @@ class DbsStudyController{
         try {
             $statement = $dbConnection->executeQuery($query, $params);
             $title = $statement->fetch(PDO::FETCH_COLUMN);
-            writeLogDebug('title-59', $title);
             if ($languageCodeHL != 'eng00'){
                 $title = $translation->translateText($title);
             }

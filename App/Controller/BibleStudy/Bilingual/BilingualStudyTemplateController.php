@@ -126,7 +126,6 @@ abstract class BilingualStudyTemplateController
         }
         $this->template = file_get_contents($file);
         $this->createBibleBlock();
-        writeLogDebug('bibleBlock-117', $this->bibleBlock);
         $this->fillPlaceHolderSpanLanguage1('{{Bible Block}}', $this->bibleBlock);
         $this->fillPlaceHolderSpanLanguage1('{{language}}', $this->language1->getName());
         $this->fillPlaceHolder('||language||', $this->language2->getName());
@@ -153,7 +152,6 @@ abstract class BilingualStudyTemplateController
         $this->fillPlaceHolder('{{font_language1}}', $this->language1->getFont());
         $this->fillPlaceHolder('||font_language2||', $this->language2->getFont());
         $this->setUniqueTemplateValues();
-        writeLogDebug('template-150', $this->template);
     }
     private function createBibleBlock(){
         // a blank record is NULL

@@ -17,7 +17,7 @@ $lesson = 3;
 $dbs = new BilingualDbsTemplateController($lang1, $lang2, $lesson);
 $html = $dbs->getTemplate();
 $filename = $dbs->getPdfName();
-writeLogDebug('filename', $filename);
+
 
 try{
     $mpdf = new Mpdf([
