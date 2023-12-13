@@ -77,10 +77,9 @@ class JesusVideoSegmentController{
       // src="https://api.arclight.org/videoPlayerUrl?refId=1_529-jf6101-0-0&amp;playerStyle=default"
     //returns src="https://api.arclight.org/videoPlayerUrl?refId=6_529-GOJohn2211&amp;start=170&amp;end=229
     protected function formatVideoSource($segment){
-        this.selectOneSegmentbyId($id);
-        $url = JVIDEO_SOURCE . '6_' . $this->languageCodeJF . '-jf'. $segment['videoSegment'];
-        $url .= '&amp;start=0&amp;end=' .  $segment['stopTime'];
-        $url .= '&amp;playerStyle=default';
+        $url = JVIDEO_SOURCE . '1_' . $this->languageCodeJF . '-jf'. $segment['videoSegment'];
+        $url .= '&start=0&end=' .  $segment['stopTime'];
+        $url .= '&playerStyle=default"';
         return $url;
     }
 

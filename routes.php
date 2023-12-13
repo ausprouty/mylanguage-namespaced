@@ -10,8 +10,6 @@ else{
 require_once  __DIR__.'/App/Configuration/my-autoload.inc.php';
 ##################################################
 require_once __DIR__.'/App/Includes/writeLog.php';
-writeLogDebug('routes', 'We are in routes');
-writeLogDebug('WEB_ROOT', WEB_ROOT);
 
 get(WEB_ROOT . 'remote', 'App/views/indexRemote.php');
 
